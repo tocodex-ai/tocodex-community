@@ -1,70 +1,3 @@
-================================================================================
-                        ToCodex — Composite License
-================================================================================
-
-ToCodex is a derivative work based on Roo Code
-(https://github.com/RooCodeInc/Roo-Code), which is licensed under the
-Apache License, Version 2.0.
-
-This single LICENSE file contains all applicable terms in three sections:
-
-    Section A. Attribution / NOTICE (per Apache 2.0 §4(d))
-    Section B. Apache License 2.0  (governs upstream Roo Code source)
-    Section C. ToCodex Commercial License
-               (governs ToCodex modifications and combined distributions)
-
-In case of conflict between Section B and Section C, Section B prevails
-for any portion of the work originating from upstream Roo Code; Section C
-applies only to the "ToCodex Distribution" as defined below.
-
-
-================================================================================
-              SECTION A — ATTRIBUTION / NOTICE
-================================================================================
-
-Upstream Work:
-    Roo Code
-    Copyright 2025 Roo Code, Inc.
-    Licensed under the Apache License, Version 2.0 (see Section B).
-    Source: https://github.com/RooCodeInc/Roo-Code
-
-ToCodex Modifications:
-    Copyright (c) 2024-2026 ToCodex
-    All modifications, additions, and the combined binary distribution
-    ("ToCodex Distribution") are licensed under the terms of Section C.
-
-Definitions:
-    "Upstream Source" means source code originating from Roo Code prior to
-    any modification by ToCodex.
-    "ToCodex Distribution" means (i) modifications, additions and new files
-    authored by ToCodex, and (ii) any compiled binary, package, .vsix or
-    other distributable that combines Upstream Source with ToCodex
-    Modifications.
-
-Trademarks:
-    "Roo Code" is a mark of Roo Code, Inc. "ToCodex" is a separate brand
-    used by the ToCodex project. Use of either mark is not granted by this
-    License. See Apache 2.0 §6 below.
-
-Redistribution Requirements (per Apache 2.0 §4):
-    When redistributing this work (modified or unmodified), you must:
-      (a) Include this LICENSE file (or an equivalent containing all three
-          sections);
-      (b) Retain the attribution in this Section A;
-      (c) Retain all copyright, patent, trademark and attribution notices
-          present in the Upstream Source;
-      (d) If you modify Upstream Source files, you may state your changes
-          in a separate notice; you must not remove or alter Roo Code's
-          copyright notices.
-
-
-================================================================================
-              SECTION B — APACHE LICENSE 2.0
-              (Governs upstream Roo Code source code)
-================================================================================
-
-Copyright 2025 Roo Code, Inc.
-
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -204,8 +137,8 @@ Copyright 2025 Roo Code, Inc.
 
    6. Trademarks. This License does not grant permission to use the trade
       names, trademarks, service marks, or product names of the Licensor,
-      except as required for describing the origin of the Work and
-      reproducing the content of the NOTICE file.
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
 
    7. Disclaimer of Warranty. Unless required by applicable law or
       agreed to in writing, Licensor provides the Work (and each
@@ -238,186 +171,31 @@ Copyright 2025 Roo Code, Inc.
       of any other Contributor, and only if You agree to indemnify,
       defend, and hold each Contributor harmless for any liability
       incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
+      of your accepting such warranty or additional liability.
 
    END OF TERMS AND CONDITIONS
 
+   APPENDIX: How to apply the Apache License to your work.
 
-================================================================================
-              SECTION C — TOCODEX PROPRIETARY LICENSE
-              (Applies ONLY to ToCodex Binary Distributions — e.g. the
-               compiled .vsix package and any other binary artifacts
-               released by ToCodex. Does NOT apply to upstream Roo Code
-               source code, which remains governed by Section B.)
-================================================================================
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
 
-ToCodex Proprietary License
-Copyright (c) 2024-2026 ToCodex
-All Rights Reserved.
+   Copyright 2024-2026 ToCodex
 
-----------------------------------------
-0. Scope
-----------------------------------------
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
 
-    This Section C governs the "ToCodex Binary Distribution", which means
-    any compiled binary form released by ToCodex, including but not limited
-    to:
-      - the ToCodex VS Code extension package (.vsix file),
-      - any pre-built artifact published by ToCodex (e.g. on a marketplace,
-        download page, or as `tocodex-latest.vsix` / `tocodex-x.y.z.vsix`),
-      - any installer or container image produced from the above.
+       http://www.apache.org/licenses/LICENSE-2.0
 
-    Nothing in this Section C restricts or alters Your rights under the
-    Apache License 2.0 (Section B) with respect to the upstream Roo Code
-    source code. If You wish to modify, fork, or redistribute the source
-    code, You may obtain the Apache-2.0 licensed upstream source directly
-    from https://github.com/RooCodeInc/Roo-Code and exercise all rights
-    granted by Section B.
-
-----------------------------------------
-1. Permitted Use (✅)
-----------------------------------------
-
-    Subject to compliance with this Section C, ToCodex grants You a
-    limited, non-exclusive, non-transferable, non-sublicensable, revocable
-    license to:
-
-    ✅ (a) Download the ToCodex Binary Distribution from official channels;
-    ✅ (b) Install the ToCodex Binary Distribution on devices You own or
-           control;
-    ✅ (c) Use the ToCodex Binary Distribution for personal use or for
-           internal business use within Your organization;
-    ✅ (d) Make a reasonable number of backup copies for internal use only.
-
-----------------------------------------
-2. Prohibited Acts (❌)
-----------------------------------------
-
-    With respect to the ToCodex Binary Distribution (and ONLY the ToCodex
-    Binary Distribution), You shall NOT, without prior written consent
-    from ToCodex:
-
-    ❌ (a) REVERSE ENGINEER. Decompile, disassemble, deobfuscate, extract
-           source code from, or otherwise attempt to derive source code,
-           algorithms, or internal structure from any binary form of the
-           ToCodex Binary Distribution, except to the minimum extent such
-           restriction is expressly prohibited by applicable mandatory law.
-
-    ❌ (b) MODIFY. Modify, adapt, translate, patch, hot-patch, inject
-           code into, repackage, recompile, or create derivative works
-           based on the ToCodex Binary Distribution. (If You wish to
-           modify the software, obtain the upstream source under
-           Apache-2.0 per Section B and build Your own derivative.)
-
-    ❌ (c) REDISTRIBUTE. Redistribute, republish, mirror, re-host,
-           sublicense, lease, rent, sell, resell, transfer, or otherwise
-           make available the ToCodex Binary Distribution to any third
-           party — whether for free or for a fee, whether in original
-           or modified form, whether stand-alone or bundled with other
-           software. This includes, without limitation:
-             - uploading the .vsix to any extension marketplace,
-             - publishing it on file-sharing sites or mirror servers,
-             - bundling it inside another product or container image,
-             - distributing it through Your own download page.
-           (To redistribute the underlying software, obtain the upstream
-           source under Apache-2.0 per Section B and distribute Your own
-           build under Apache-2.0.)
-
-    ❌ (d) REMOVE NOTICES. Remove, alter, obscure, or replace any
-           copyright notice, trademark, branding, attribution, license
-           text, or proprietary marking contained in the ToCodex Binary
-           Distribution.
-
-    ❌ (e) CIRCUMVENT. Bypass, disable, or circumvent any license
-           enforcement, activation, telemetry, access control, or
-           anti-tamper mechanism in the ToCodex Binary Distribution.
-
-    ❌ (f) COMMERCIAL EXPLOITATION. Use the ToCodex Binary Distribution
-           to provide a competing hosted service, a paid SaaS offering,
-           or any service whose primary value is the ToCodex Binary
-           Distribution itself, without a separate written commercial
-           agreement with ToCodex.
-
-    Important clarification: Sections 2(a)–(f) above apply solely to the
-    ToCodex Binary Distribution. They do NOT, and cannot, restrict Your
-    Apache-2.0 rights with respect to the upstream Roo Code source code.
-
-----------------------------------------
-3. Ownership
-----------------------------------------
-
-    Apart from rights to the upstream Roo Code source code (which remain
-    with Roo Code, Inc. and its contributors under Apache-2.0), all
-    right, title, and interest in and to the ToCodex Binary Distribution,
-    including all intellectual property rights, are and shall remain the
-    exclusive property of ToCodex. No title or ownership in the ToCodex
-    Binary Distribution is transferred to You under this License.
-
-----------------------------------------
-4. Term and Termination
-----------------------------------------
-
-    This Section C is effective until terminated. Your rights under this
-    Section C automatically terminate without notice if You breach any of
-    its terms. Upon termination, You must immediately cease all use of
-    the ToCodex Binary Distribution and destroy all copies in Your
-    possession or control. Termination of this Section C does NOT affect
-    Your rights to the upstream Roo Code source code under Section B.
-
-----------------------------------------
-5. Disclaimer of Warranty
-----------------------------------------
-
-    THE TOCODEX BINARY DISTRIBUTION IS PROVIDED "AS IS" AND "AS AVAILABLE",
-    WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
-    LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
-    PURPOSE, TITLE, AND NON-INFRINGEMENT. TOCODEX DOES NOT WARRANT THAT
-    THE TOCODEX BINARY DISTRIBUTION WILL BE ERROR-FREE OR UNINTERRUPTED.
-
-----------------------------------------
-6. Limitation of Liability
-----------------------------------------
-
-    TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL
-    TOCODEX BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-    CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE,
-    DATA, OR GOODWILL, ARISING OUT OF OR IN CONNECTION WITH THIS LICENSE
-    OR THE USE OF (OR INABILITY TO USE) THE TOCODEX BINARY DISTRIBUTION,
-    WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, EVEN IF
-    TOCODEX HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
-
-----------------------------------------
-7. Governing Law
-----------------------------------------
-
-    This Section C shall be governed by and construed in accordance with
-    applicable law, without regard to its conflict of laws principles.
-
-----------------------------------------
-8. Contact
-----------------------------------------
-
-    For commercial licensing inquiries, redistribution permission
-    requests, or to report violations, please contact the ToCodex project
-    through its official channels.
-
-----------------------------------------
-Summary (non-binding, for quick reference)
-----------------------------------------
-
-    ToCodex Binary Distribution (.vsix etc.):
-      ✅ Install and use (personal / internal business)
-      ❌ Reverse engineer / decompile
-      ❌ Modify / repackage
-      ❌ Redistribute / republish / re-host
-      ❌ Remove notices / branding
-      ❌ Circumvent license / telemetry mechanisms
-      ❌ Commercial exploitation as a service
-
-    Upstream Roo Code source code:
-      ✅ Full Apache-2.0 rights — use, modify, fork, redistribute
-         (obtain from https://github.com/RooCodeInc/Roo-Code)
-
-================================================================================
-                           END OF LICENSE FILE
-================================================================================
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.

@@ -1,7 +1,10 @@
-﻿# NOTICE
+# NOTICE
 
-ToCodex Community is based on Roo Code, originally licensed under Apache License 2.0.
+ToCodex Community is based on Roo Code, originally licensed under the Apache License, Version 2.0.
 
 Upstream project: https://github.com/RooCodeInc/Roo-Code
+Upstream copyright: Copyright 2025 Roo Code, Inc.
 
-ToCodex Community preserves upstream Apache-2.0 attribution. ToCodex is not affiliated with Roo Code, Inc. Roo Code is a trademark of its respective owner.
+ToCodex modifications: Copyright 2024-2026 ToCodex
+
+This project preserves upstream Apache-2.0 attribution. ToCodex is not affiliated with Roo Code, Inc. Roo Code is a trademark of its respective owner. The ToCodex name and marks are separate ToCodex project marks and are not granted by the Apache License except as required for reasonable attribution.
