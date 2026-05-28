@@ -31,6 +31,17 @@ ToCodex Community is maintained as an independent continuation based on Roo Code
 | **Main model plus auxiliary model** | Separates the primary coding model from a lighter auxiliary model for summaries, condense, memory, and background support work. |
 | **Built-in `web_fetch`** | Fetches URLs directly, converts pages to Markdown, handles trusted documentation domains, and reduces dependence on external MCP just to read web content. |
 
+### Major New Modes And Capabilities
+
+| Status | Major Capability | What It Adds |
+| --- | --- | --- |
+| **ENHANCED** | Complex large-project refactoring | Improves large-repository refactoring with multi-solution comparison, dependency tracing, staged implementation, proactive verification, and clearer risk control. |
+| **NEW** | SSH Server mode | Adds remote server administration workflows, including SSH execution, Docker container operations/logs, PostgreSQL queries, deployment checks, and infrastructure diagnostics. |
+| **NEW** | Image Gen mode | Adds a dedicated image generation workflow for text-to-image, image-to-image, targeted image editing, saved image handling, and ToCodex image model routing. |
+| **NEW** | Browser Task mode | Adds browser task automation for page interaction, inspection, login-state handling, Playwright MCP usage, Chrome/Edge reuse, and web UI workflows. |
+| **NEW** | Scheduled Task mode | Adds timed and repeatable background automation so tasks can run on schedule without interrupting the active foreground conversation. |
+| **ENHANCED** | Memo and memory persistence | Adds persistent project notes, memory injection, `/remember`, `/forget`, background memory extraction, and task progress persistence for long-running work. |
+
 | Dimension | Roo Code v1 Baseline | ToCodex v2/v3 Upgrade |
 | --- | --- | --- |
 | Code understanding | Relies mostly on `grep` / `search_files` style text search. | Adds `lsp_code_intelligence` backed by VS Code language services: go to definition, find references, hover/type information, symbols, and call hierarchy. |
