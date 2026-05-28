@@ -17,6 +17,34 @@ ToCodex Community is based on Roo Code and preserves Apache-2.0 upstream attribu
 - Community-oriented source distribution with telemetry disabled and cloud implementation stubbed.
 - Optional ToCodex Desktop, Cloud, and Enterprise offerings remain separate commercial products.
 
+## What ToCodex Adds Beyond Roo Code
+
+ToCodex Community is maintained as an independent continuation based on Roo Code, with upstream attribution preserved while focusing on a broader, more configurable AI engineering workflow. The updates below summarize the main capability upgrades reflected in the ToCodex product notes and website documentation.
+
+### Expanded Functional Modes
+
+ToCodex organizes work into purpose-built modes so the agent can follow different rules, tools, and review expectations for different tasks.
+
+| Mode Area | Updates And Purpose |
+| --- | --- |
+| Core engineering modes | Architect, Code, Ask, Debug, and Orchestrator cover planning, implementation, explanation, troubleshooting, and multi-step coordination. |
+| Delivery and automation modes | Browser Task and Scheduled Task modes extend ToCodex from one-off coding help into repeatable browser workflows and timed automation. |
+| Repository collaboration modes | Issue Fixer, PR Fixer, Merge Resolver, Issue Investigator, and Issue Writer focus on GitHub issue/PR workflows, failed checks, merge conflicts, root-cause analysis, and structured issue creation. |
+| Documentation and localization modes | Docs Extractor and Translate modes help extract feature details, maintain documentation, and handle i18n work with task-specific behavior. |
+| User-defined workflows | Custom modes let teams define their own roles, tool access, prompts, and operating boundaries for project-specific practices. |
+
+### Major Capability Upgrades
+
+| Upgrade Area | What ToCodex Adds |
+| --- | --- |
+| Model freedom | BYOK, local models, Ollama, LM Studio, OpenAI-compatible providers, and configurable routing reduce dependence on a single model vendor. |
+| Extensible tool ecosystem | MCP over stdio/SSE/HTTP, Skills, slash commands, hooks, custom tools, and marketplace-style workflows make ToCodex easier to extend for real projects. |
+| Agent orchestration | Plan Mode, todo tracking, `new_task` delegation, parallel subtasks, mode switching, task history, and Git worktree support help break large tasks into controlled steps. |
+| Code intelligence and context | Codebase indexing, semantic search, LSP code intelligence, diagnostics, file search, memory-oriented context handling, and web fetch improve grounding across larger repositories. |
+| Safer automation | Fine-grained auto-approval, command allow/deny lists, protected files, RooIgnore-style exclusions, checkpoints, and rollback-oriented Git workflows make automation more controllable. |
+| Developer surfaces | VS Code webview UX, editor actions, terminal workflows, notebook editing, image generation tools, import/export settings, and profile management broaden day-to-day usage. |
+| Community distribution | The community build keeps source available, disables telemetry, stubs closed cloud dependencies, updates branding/package metadata, and maintains independent documentation and release notes. |
+
 ## Global AI Coding Tool Comparison
 
 The AI coding market is moving quickly, and each product makes different trade-offs between model freedom, in-editor editing, agent loops, terminal capability, extensibility, and enterprise controls. The comparison below uses the visual comparison assets prepared for ToCodex Community; details may change as each vendor updates its product.
