@@ -1,8 +1,8 @@
 # ToCodex Community
 
-## 我的 AI 超能力
+## 我的 AI 超能力 / My AI Superpowers
 
-### 社区互动 TG 群
+### 社区互动 TG 群 / Community Telegram Group
 
 <img src="docs/images/tg.jpg" alt="ToCodex Community Telegram group" width="360">
 
