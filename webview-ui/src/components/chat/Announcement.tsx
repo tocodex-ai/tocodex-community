@@ -54,7 +54,7 @@ const Announcement = ({ hideAnnouncement }: AnnouncementProps) => {
 							<SocialLink
 								icon={<SiX className="w-4 h-4" aria-hidden />}
 								label="X"
-								href="https://ruteapi.com"
+								href="https://tocodex.com"
 							/>
 							<SocialLink
 								icon={<SiDiscord className="w-4 h-4" aria-hidden />}
@@ -64,7 +64,7 @@ const Announcement = ({ hideAnnouncement }: AnnouncementProps) => {
 							<SocialLink
 								icon={<SiReddit className="w-4 h-4" aria-hidden />}
 								label="Reddit"
-								href="https://ruteapi.com"
+								href="https://tocodex.com"
 							/>
 						</div>
 					</div>
@@ -114,10 +114,10 @@ const GitHubLink = ({ children }: { children?: ReactNode }) => (
 
 const CareersLink = ({ children }: { children?: ReactNode }) => (
 	<VSCodeLink
-		href="https://ruteapi.com"
+		href="https://tocodex.com"
 		onClick={(e) => {
 			e.preventDefault()
-			vscode.postMessage({ type: "openExternal", url: "https://ruteapi.com" })
+			vscode.postMessage({ type: "openExternal", url: "https://tocodex.com" })
 		}}>
 		{children}
 	</VSCodeLink>

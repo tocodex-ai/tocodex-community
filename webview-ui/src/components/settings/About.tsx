@@ -52,7 +52,7 @@ export const About = ({ telemetrySetting, setTelemetrySetting, debug, setDebug, 
 						<Trans
 							i18nKey="settings:footer.telemetry.description"
 							components={{
-								privacyLink: <VSCodeLink href="https://ruteapi.com/privacy" />,
+								privacyLink: <VSCodeLink href="https://tocodex.com/privacy" />,
 							}}
 						/>
 					</p>
@@ -63,7 +63,7 @@ export const About = ({ telemetrySetting, setTelemetrySetting, debug, setDebug, 
 				<p className="text-vscode-descriptionForeground italic">{t("settings:about.slogan")}</p>
 				<p>
 					{t("settings:about.website")}:{" "}
-					<VSCodeLink href="https://ruteapi.com">https://ruteapi.com</VSCodeLink>
+					<VSCodeLink href="https://tocodex.com">https://tocodex.com</VSCodeLink>
 				</p>
 				{setDebug && (
 					<SearchableSetting

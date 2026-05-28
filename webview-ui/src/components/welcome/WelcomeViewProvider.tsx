@@ -102,7 +102,7 @@ const WelcomeViewProvider = () => {
 	const handleGetStarted = useCallback(() => {
 		// Landing screen - open account registration directly.
 		if (selectedProvider === null) {
-			vscode.postMessage({ type: "openExternal", url: "https://ruteapi.com/register" })
+			vscode.postMessage({ type: "openExternal", url: "https://tocodex.com/register" })
 		}
 		// Provider Selection screen
 		else if (selectedProvider === "roo") {
@@ -187,7 +187,7 @@ const WelcomeViewProvider = () => {
 	}, [manualUrl])
 
 	const handleOpenSignupUrl = () => {
-		vscode.postMessage({ type: "openExternal", url: "https://ruteapi.com/register" })
+		vscode.postMessage({ type: "openExternal", url: "https://tocodex.com/register" })
 	}
 
 	// Render the waiting for cloud state
@@ -334,7 +334,7 @@ const WelcomeViewProvider = () => {
 									{t("welcome:landing.bindApiKey")}
 								</button>
 								<span className="text-vscode-descriptionForeground text-xs">|</span>
-								<VSCodeLink href="https://ruteapi.com/keys" className="text-sm">
+								<VSCodeLink href="https://tocodex.com/keys" className="text-sm">
 									{t("welcome:landing.howToGetKey")}
 								</VSCodeLink>
 							</div>
@@ -400,7 +400,7 @@ const WelcomeViewProvider = () => {
 								</p>
 								<p className="text-base text-vscode-descriptionForeground mt-0">
 									{t("welcome:providerSignup.rooCloudDescription")}{" "}
-									<VSCodeLink href="https://ruteapi.com" className="cursor-pointer">
+									<VSCodeLink href="https://tocodex.com" className="cursor-pointer">
 										{t("welcome:providerSignup.learnMore")}
 									</VSCodeLink>
 								</p>

@@ -15,7 +15,7 @@ const VersionIndicator: React.FC<VersionIndicatorProps> = ({ className = "" }) =
 
 	return (
 		<a
-			href="https://ruteapi.com"
+			href="https://tocodex.com"
 			target="_blank"
 			rel="noopener noreferrer"
 			className={`text-xs text-vscode-descriptionForeground rounded-full hover:text-vscode-foreground transition-colors cursor-pointer px-2 py-1 border no-underline ${className}`}

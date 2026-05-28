@@ -68,11 +68,11 @@ export const CloudView = ({ userInfo, isAuthenticated, onBackToChat, onShowWelco
 	}
 
 	const handleVisitWebsite = () => {
-		vscode.postMessage({ type: "openExternal", url: "https://ruteapi.com" })
+		vscode.postMessage({ type: "openExternal", url: "https://tocodex.com" })
 	}
 
 	const handleRegister = () => {
-		vscode.postMessage({ type: "openExternal", url: "https://ruteapi.com/register" })
+		vscode.postMessage({ type: "openExternal", url: "https://tocodex.com/register" })
 	}
 
 	const handleBindApiKey = useCallback(() => {
