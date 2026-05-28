@@ -27,7 +27,7 @@ ToCodex Community is maintained as an independent continuation based on Roo Code
 | --- | --- |
 | **Plan Mode and persisted planning** | Lets the agent explore in read-only mode, present a structured plan, persist task progress, and move into implementation only after confirmation. |
 | **Browser Task mode** | Adds a new browser-oriented workflow for page interaction, inspection, login-state handling, Playwright MCP usage, and web UI operation. |
-| **Parallel multi-agent work** | Adds `spawn_parallel_task` so independent subtasks can run concurrently, with status tracking and a default maximum of 3 parallel agents. |
+| **Parallel multi-agent work** | Adds `spawn_parallel_task` so independent subtasks can run concurrently, with status tracking and support for up to 10 parallel tasks at the same time. |
 | **Main model plus auxiliary model** | Separates the primary coding model from a lighter auxiliary model for summaries, condense, memory, and background support work. |
 | **Built-in `web_fetch`** | Fetches URLs directly, converts pages to Markdown, handles trusted documentation domains, and reduces dependence on external MCP just to read web content. |
 
@@ -56,7 +56,7 @@ ToCodex Community is maintained as an independent continuation based on Roo Code
 | File reading | Reads from disk repeatedly during a task. | Adds LRU file read caching with write invalidation and cache cleanup at task end. |
 | Large output handling | Large file/search/command results can be inserted into context directly. | Adds automatic summarization for oversized `read_file`, `search_files`, and command outputs while preserving useful head/tail content. |
 | Web content fetching | Usually needs MCP or manual pasted content. | Adds built-in `web_fetch` for URL fetching, Markdown conversion, trusted-domain handling, and long-content extraction. |
-| Parallel capability | Supports single-layer parent/child task delegation. | Adds `spawn_parallel_task`, parallel child tracking, concurrency limits, result aggregation, and UI visibility for independent subtasks. |
+| Parallel capability | Supports single-layer parent/child task delegation. | Adds `spawn_parallel_task`, up to 10 simultaneous parallel tasks, parallel child tracking, result aggregation, and UI visibility for independent subtasks, delivering a leading efficiency gain in comparison testing. |
 | Notebook editing | Does not provide a dedicated notebook cell edit tool. | Adds `notebook_edit` for cell-level replace/insert/delete operations while preserving notebook structure and outputs. |
 | Automation hooks | No task-level user hook system. | Adds Agent Hooks for `PreToolUse`, `PostToolUse`, and `Stop`, including shell commands, tool filters, timeout handling, settings UI, and failure context injection. |
 | Tool loading | Loads the available tool surface eagerly into the prompt. | Adds deferred tool loading and `tool_search`, enabling search/select loading when the tool count becomes large. |
