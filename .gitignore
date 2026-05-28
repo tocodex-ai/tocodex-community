@@ -28,6 +28,7 @@ AGENTS.local.md
 
 # Docs
 docs/_site/
+tocodex-docs/
 
 # Dotenv
 .env
