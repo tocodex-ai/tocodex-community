@@ -1,5 +1,11 @@
 # ToCodex Community
 
+## 我的 AI 超能力
+
+### 社区互动 TG 群
+
+![ToCodex Community Telegram group](docs/images/tg.jpg)
+
 ToCodex Community is a maintained open-source AI coding agent for VS Code, evolved from Roo Code and kept independent for community use. It focuses on practical engineering workflows: planning, editing, debugging, terminal work, MCP tools, multi-model providers, and repeatable project automation inside the editor.
 
 Website: https://tocodex.com
