@@ -8,9 +8,15 @@
 
 - `README.md`
   - 新增 `Global AI Coding Tool Comparison` 章节。
-  - 增加 `Key Capability Radar` 能力概览表。
-  - 增加 `Feature Matrix` 功能矩阵表。
-  - 使用基于公开资料和产品定位的谨慎表述，避免对竞品能力做过度断言。
+  - 通过 `tocodex-docs/image1.png` 展示 `Key Capability Radar` 能力雷达图。
+  - 通过 `tocodex-docs/image0.png` 展示 `Feature Matrix` 详实功能矩阵图。
+  - 保留简短产品定位说明，主体对比内容直接使用现有图片素材。
+
+- `tocodex-docs/image0.png`
+  - README 中引用的详实功能矩阵对比图。
+
+- `tocodex-docs/image1.png`
+  - README 中引用的市场主流 AI Coding 关键能力对比图。
 
 - `tocodex-docs/2026-05-28_ToCodex-Community全球AI编程工具对比README备忘.md`
   - 记录本次 README 文档更新范围。

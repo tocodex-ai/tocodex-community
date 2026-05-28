@@ -19,38 +19,15 @@ ToCodex Community is based on Roo Code and preserves Apache-2.0 upstream attribu
 
 ## Global AI Coding Tool Comparison
 
-The AI coding market is moving quickly, and each product makes different trade-offs between model freedom, in-editor editing, agent loops, terminal capability, extensibility, and enterprise controls. The comparison below is a high-level product-positioning view based on public product information and observed capabilities; details may change as each vendor updates its product.
+The AI coding market is moving quickly, and each product makes different trade-offs between model freedom, in-editor editing, agent loops, terminal capability, extensibility, and enterprise controls. The comparison below uses the visual comparison assets prepared for ToCodex Community; details may change as each vendor updates its product.
 
 ### Key Capability Radar
 
-| Tool | Model Freedom | In-Editor Editing | Agent Loop | Terminal Capability | Extensibility | Enterprise Readiness |
-| --- | --- | --- | --- | --- | --- | --- |
-| ToCodex Community | High: BYOK, local models, OpenAI-compatible providers, configurable routing | Strong: VS Code webview plus editor actions | Strong: task loop, tools, plan mode, subtasks | Strong: terminal tools and command workflows | Strong: MCP, custom modes, slash commands, skills, hooks | Community source plus separate commercial offerings |
-| Claude Code | Medium: Claude-focused | Medium: terminal-first workflow | Strong: terminal agent | Strong: shell-native usage | Medium: MCP support | Enterprise-oriented Claude plans |
-| OpenAI Codex / Codex CLI | Medium: OpenAI model family | Medium: CLI and cloud task flow | Strong: coding agent and task queue | Strong: CLI/cloud workflow | Medium: CLI extensibility and repo context | ChatGPT Enterprise/API ecosystem |
-| Cursor | Medium: curated model choices plus user keys | Strong: editor-native autocomplete and chat | Medium: agent mode | Medium: terminal/editor integration | Medium: editor extensions and MCP-style integrations | Enterprise plan available |
-| Kiro | Medium: spec-driven workflow | Medium: IDE-integrated edits | Medium: agent/spec mode | Medium: IDE task flow | Medium: hooks/spec/project workflow | Enterprise integrations through AWS ecosystem |
-| Trae | Medium: provider-integrated | Strong: IDE-native builder/editor flow | Medium: builder agent | Medium: integrated terminal workflow | Medium: tool ecosystem | Team/Pro-oriented capability set |
+![Market mainstream AI Coding key capability comparison](tocodex-docs/image1.png)
 
 ### Feature Matrix
 
-| Capability | ToCodex Community | Claude Code | OpenAI Codex / Codex CLI | Cursor | Kiro | Trae |
-| --- | --- | --- | --- | --- | --- | --- |
-| Agent mode | Agent loop inside VS Code | Terminal agent | Cloud/CLI coding agent | Editor agent mode | Spec/agent workflow | Builder agent |
-| Model support | BYOK, local models, OpenAI-compatible providers | Claude-focused | OpenAI model family | Curated providers and user keys | Limited public provider surface | Multi-provider oriented |
-| Local models | Ollama / LM Studio / compatible endpoints | Not primary | Not primary | Ollama support | Not primary | Limited/varies by edition |
-| Code completion | Task and edit oriented; completion can be provider-driven | Not primary | Not primary | Tab completion first | Inline/spec-assisted edits | Inline/editor completion |
-| Parallel tasks | Subtasks and `new_task` workflows | Process-level parallelism | Cloud/queue based tasks | Not primary | Not primary | Not primary |
-| Planning mode | Plan Mode and custom modes | `/plan` style planning | Task planning | Think/agent planning | Spec-first planning | Planning workflow |
-| Checkpoints | Git checkpoint support | External Git workflow | PR/diff review flow | Built-in restore/checkpoint behavior | Built-in restore/checkpoint behavior | Built-in restore/checkpoint behavior |
-| MCP protocol | stdio / SSE / HTTP | Supported | CLI extensibility | Supported | Powers/tools integrations | Supported |
-| Custom modes | Multi-mode system | Not primary | Prompt/command driven | Not primary | Not primary | Not primary |
-| Skills | Skills framework | Not primary | Custom command style | Not primary | Not primary | Not primary |
-| Web access | `web_fetch` tool support | WebFetch-style tool support | Web-connected features | Not primary | Not primary | Not primary |
-| LSP integration | Semantic code intelligence and diagnostics | LSP-aware workflows | Repository context | Code intelligence | Varies | Varies |
-| Context and memory | Project context, task history, memory-oriented architecture | Conversation and repo context | Repo/task context | Editor/repo context | Spec/project context | Project context |
-| Internationalization | Broad locale coverage | English-first | English-first | Varies | Varies | Chinese/English oriented |
-| Pricing posture | Open-source community build; bring your own keys | Paid Claude plans | ChatGPT/API plans | Paid plans | Preview/paid plans vary | Free/Pro plans vary |
+![Detailed AI coding tools feature matrix](tocodex-docs/image0.png)
 
 In short, ToCodex Community is positioned as an open, extensible VS Code agent runtime for developers who want model choice, local-provider support, MCP tooling, custom modes, and transparent source code. Commercial ToCodex offerings can add hosted routing, account services, team controls, and enterprise support without making the community edition depend on closed-source services.
 
