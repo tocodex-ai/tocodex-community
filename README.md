@@ -21,6 +21,10 @@ ToCodex Community is based on Roo Code and preserves Apache-2.0 upstream attribu
 
 The AI coding market is moving quickly, and each product makes different trade-offs between model freedom, in-editor editing, agent loops, terminal capability, extensibility, and enterprise controls. The comparison below uses the visual comparison assets prepared for ToCodex Community; details may change as each vendor updates its product.
 
+### Functional Modes
+
+![ToCodex Community functional modes](tocodex-docs/image2.png)
+
 ### Key Capability Radar
 
 ![Market mainstream AI Coding key capability comparison](tocodex-docs/image1.png)
