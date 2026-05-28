@@ -19,44 +19,52 @@ ToCodex Community is based on Roo Code and preserves Apache-2.0 upstream attribu
 
 ## What ToCodex Adds Beyond Roo Code
 
-ToCodex Community is maintained as an independent continuation based on Roo Code, with upstream attribution preserved while focusing on a broader, more configurable AI engineering workflow. The upgrade path below is consolidated from the ToCodex changelog and website product notes, with repeated items listed only once.
+ToCodex Community is maintained as an independent continuation based on Roo Code, with upstream attribution preserved. The upgrade summary below is consolidated from the ToCodex source planning docs, implementation task lists, architecture report, and release memos in the main ToCodex codebase.
 
-### First Major Upgrade: v2 To v3
+### Platform Migration From Roo Code
 
-The first major leap was the ToCodex v2 to v3 foundation upgrade, later summarized in the v3.05 changelog as a shift toward multi-model, multi-agent collaboration, better requirement understanding, smarter task execution, and higher cost efficiency.
+The first ToCodex platform work converted the Roo Code extension into an independent ToCodex build while keeping the proven VS Code extension architecture intact.
 
-| Upgrade Area | What Changed In v3 |
+| Area | ToCodex Change |
 | --- | --- |
-| Planning and execution | Plan Mode, plan persistence, follow-up defaults, todo tracking, progress reporting, and stronger task state handling made long-running work easier to control. |
-| Code intelligence | LSP code intelligence, diagnostics, codebase understanding, memory, and context handling improved how the agent reads and reasons about larger repositories. |
-| Agent automation | Hooks, parallelism, notebook editing, auxiliary models, and task orchestration expanded ToCodex from a single chat loop into a richer engineering runtime. |
-| Cost and model workflow | Cost tracking, light/auxiliary model configuration, default model cleanup, and context-limit handling made model usage more transparent and economical. |
-| Stability and UX | Environment dependency handling, command-state fixes, screenshot behavior, scroll stability, and scheduling architecture documentation improved day-to-day reliability. |
+| Brand and packaging | Renamed public extension metadata, icons, package output, user-facing strings, settings text, and documentation links for ToCodex distribution. |
+| Router and authentication | Replaced Roo Code Cloud / Clerk-oriented flows with a ToCodex Router path and a NewAPI-style API key bridge, including environment overrides for API and auth endpoints. |
+| Community boundary | Kept local BYOK, OpenAI-compatible, MCP, modes, task runtime, and webview workflows usable while stubbing closed cloud behavior in the community edition. |
+| UI simplification | Reworked account, about, welcome, provider, and model-selection surfaces so ToCodex can operate independently without Roo Code Cloud-specific product flows. |
 
-### Changelog-Driven Upgrades Since v3
+### v2 Major Upgrade: Agent Runtime Expansion
 
-| Version | Upgrade Summary |
+The v2 upgrade plan added 19 capability groups on top of the existing Roo Code-derived base. Its implementation task list marks the core, experience, and advanced phases complete except for final voice-input UI integration.
+
+| Phase | Major Additions |
 | --- | --- |
-| v3.0.3 | Fixed screenshot paste and multimodal image support, renamed the output channel to ToCodex, and cleaned reference directories. |
-| v3.0.5 | Strengthened auto-approval with clearer approval flow and full run-all-commands support. |
-| v3.0.6 | Completed the parallel task pipeline with bilingual settings UI, independent Task instances, result aggregation, and checkpoint improvements. |
-| v3.0.8 | Improved max token limits, parallel task experience, model ratio display, and model acquisition strategy. |
-| v3.1.0 | Added auxiliary models, history preview, code block copy, cache-hit visibility, parallel task snapshots, and precise context-limit matching. |
-| v3.1.4 | Packaged SSH Server mode and embedded MCP Server support to expand remote operation and external tool access. |
-| v3.1.5 | Added image generation improvements, clickable InlineCode, and local project memos for persisted execution knowledge. |
-| v3.1.6 | Improved complex large-project refactoring with multi-solution comparison, dependency tracing, and proactive verification. |
-| v3.1.7 | Optimized context compression timing, model/context display, indexing visibility, and task header state. |
-| v3.1.8 | Enhanced image generation with image-to-image and targeted image editing, and released the ToCodex CLI 1.0.0. |
+| Core reliability and code intelligence | Added `lsp_code_intelligence`, smarter semantic tool repetition detection, retry/fallback strategy, file read caching, `web_fetch`, and automatic tool-result summarization for large outputs. |
+| Experience and control | Added real-time task progress summaries, precise cost tracking, persisted todo progress, explicit Plan Mode, context health analysis, token budget parsing, and auxiliary/light model routing. |
+| Advanced automation | Added project memory, `spawn_parallel_task`, `notebook_edit`, Agent Hooks, deferred `tool_search`, and stronger task orchestration for larger multi-file work. |
+| Verification posture | Added property-based checks around LSP behavior, memory idempotency, retry limits, cache invalidation, token budget parsing, result summarization, Plan Mode isolation, parallel-task limits, and hook ordering. |
+
+### 3.1.x Product And Stability Upgrades
+
+After the v2 platform upgrade, ToCodex continued shipping practical improvements around model control, context handling, image generation, browser automation, and scheduled work.
+
+| Area | Upgrade Summary |
+| --- | --- |
+| Image generation | Added a dedicated Image Gen mode, enabled image generation by default for new users, aligned ToCodex image models with server routes, and supported text-to-image, image-to-image, and image-editing paths. |
+| Context resilience | Changed automatic condense to a 90% default threshold, removed misleading max-output-token reservation from the trigger calculation, and added token-based hard truncation when very large context condense fails. |
+| Reasoning and provider UX | Made reasoning-effort controls visible for ToCodex dynamic models when users explicitly enable them, kept unsupported models quiet by default, and pinned ToCodex plus OpenAI Compatible near the top of provider selection. |
+| Browser workflow | Added browser-oriented mode planning around Playwright MCP, Node/npm availability, local Chrome/Edge reuse, persistent browser profiles, CDP takeover, proxy/mirror fallback, and remote-development degradation paths. |
+| Scheduled tasks | Fixed scheduled tasks as background tasks so timed runs do not cancel or get cancelled by the user's active foreground conversation. |
+| Remote and automation modes | Packaged SSH Server mode and embedded MCP support so ToCodex can cover server diagnostics, Docker/log inspection, database queries, and external tool workflows from the same agent surface. |
 
 ### Current Functional Mode Expansion
 
-ToCodex organizes work into purpose-built modes so the agent can follow different rules, tools, and review expectations for different tasks. The latest website update expands the intelligent mode surface from 12 to 16 cards.
+ToCodex organizes work into purpose-built modes so the agent can follow different rules, tools, and review expectations for different tasks.
 
 | Mode Area | Updates And Purpose |
 | --- | --- |
 | Core engineering modes | Architect, Code, Ask, Debug, and Orchestrator cover planning, implementation, explanation, troubleshooting, and multi-step coordination. |
-| Browser Task mode | Adds browser-oriented task execution for workflows that need page interaction, inspection, or web UI operation. |
-| Scheduled Task mode | Adds timed and repeatable automation so ToCodex can run planned work beyond one-off chat sessions. |
+| Browser Task mode | Adds browser-oriented task execution for workflows that need page interaction, inspection, login-state handling, or web UI operation. |
+| Scheduled Task mode | Adds timed and repeatable background automation so planned work can run without interrupting the active chat task. |
 | Repository collaboration modes | Issue Fixer, PR Fixer, Merge Resolver, Issue Investigator, and Issue Writer focus on GitHub issue/PR workflows, failed checks, merge conflicts, root-cause analysis, and structured issue creation. |
 | Documentation and localization modes | Docs Extractor and Translate modes help extract feature details, maintain documentation, and handle i18n work with task-specific behavior. |
 | User-defined workflows | Custom modes let teams define their own roles, tool access, prompts, and operating boundaries for project-specific practices. |
@@ -65,12 +73,12 @@ ToCodex organizes work into purpose-built modes so the agent can follow differen
 
 | Theme | Capability Added Or Strengthened |
 | --- | --- |
-| Model freedom | BYOK, local models, Ollama, LM Studio, OpenAI-compatible providers, auxiliary/light models, and configurable routing reduce dependence on a single model vendor. |
-| Extensible tools | MCP over stdio/SSE/HTTP, embedded MCP packaging, Skills, slash commands, hooks, custom tools, SSH Server mode, and marketplace-style workflows extend ToCodex for real projects. |
-| Agent orchestration | Plan Mode, todo tracking, `new_task` delegation, parallel subtasks, mode switching, task history, checkpoints, and Git worktree support help break large tasks into controlled steps. |
-| Context and memory | Codebase indexing, semantic search, LSP code intelligence, diagnostics, memory, context compression, cache visibility, and web fetch improve grounding across larger repositories. |
-| Safer automation | Fine-grained auto-approval, run-all-commands control, command allow/deny lists, protected files, RooIgnore-style exclusions, checkpoints, and rollback-oriented Git workflows make automation more controllable. |
-| Developer surfaces | VS Code webview UX, editor actions, terminal workflows, ToCodex CLI, notebook editing, multimodal image input, image generation/editing, import/export settings, profiles, and project memos broaden day-to-day usage. |
+| Model freedom | BYOK, local models, Ollama, LM Studio, OpenAI-compatible providers, auxiliary/light models, dynamic model routing, and configurable reasoning controls reduce dependence on a single model vendor. |
+| Extensible tools | MCP over stdio/SSE/HTTP, embedded MCP packaging, Skills, slash commands, hooks, custom tools, SSH Server mode, browser workflows, and marketplace-style loading extend ToCodex for real projects. |
+| Agent orchestration | Plan Mode, todo persistence, `new_task` delegation, parallel subtasks, mode switching, task history, checkpoints, scheduled tasks, and Git worktree support help break large work into controlled steps. |
+| Context and memory | Codebase indexing, semantic search, LSP code intelligence, diagnostics, project memory, context compression, token-based truncation, cache visibility, and web fetch improve grounding across larger repositories. |
+| Safer automation | Fine-grained auto-approval, run-all-commands control, command allow/deny lists, protected files, RooIgnore-style exclusions, checkpoints, hook gates, and rollback-oriented Git workflows make automation more controllable. |
+| Developer surfaces | VS Code webview UX, editor actions, terminal workflows, notebook editing, multimodal image input, image generation/editing, import/export settings, profiles, browser profiles, and project memos broaden day-to-day usage. |
 | Community distribution | The community build keeps source available, disables telemetry, stubs closed cloud dependencies, updates branding/package metadata, and maintains independent documentation and release notes. |
 
 ## Global AI Coding Tool Comparison
