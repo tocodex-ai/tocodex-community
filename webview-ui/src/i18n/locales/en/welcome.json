@@ -1,0 +1,57 @@
+{
+	"routers": {
+		"requesty": {
+			"description": "Your optimized LLM router",
+			"incentive": "$1 free credit"
+		},
+		"openrouter": {
+			"description": "A unified interface for LLMs"
+		},
+		"roo": {
+			"description": "The best free models to get started",
+			"incentive": "Try tocodex-Community for free"
+		}
+	},
+	"landing": {
+		"greeting": "Welcome to tocodex-Community!",
+		"introduction": "Built with the most powerful models, designed for high-quality engineering delivery. 12 work modes, automating the entire workflow end-to-end from design and development to packaging and compilation. Let AI become your superpower for productivity.",
+		"accountMention": "To get started, create your tocodex-Community account. Get powerful models, high-quality engineering, cost analysis, and more.",
+		"getStarted": "Create tocodex-Community Account",
+		"noAccount": "or use without an account",
+		"bindApiKey": "Bind tocodex-Community API Key",
+		"howToGetKey": "How to get API Key",
+		"bind": "Bind"
+	},
+	"providerSignup": {
+		"heading": "Choose your provider",
+		"chooseProvider": "tocodex-Community needs an LLM provider to work. Choose one to get started, you can add more later.",
+		"rooCloudProvider": "tocodex-Community",
+		"rooCloudDescription": "The easiest way to start is with tocodex-Community: a curated mix of free and paid models at a low cost.",
+		"learnMore": "Learn more",
+		"useAnotherProvider": "3rd-party Provider",
+		"useAnotherProviderDescription": "Enter an API key and get going.",
+		"noApiKeys": "Don't want to deal with API keys and separate accounts?",
+		"backToToCodex": "Go with tocodex-Community.",
+		"goBack": "Back",
+		"finish": "Finish"
+	},
+	"waitingForCloud": {
+		"heading": "Logging into tocodex-Community...",
+		"description": "We'll take you to your browser to sign up for tocodex-Community. We'll then bring you back here to finish.",
+		"noPrompt": "If you don't get prompted to open a URL, <clickHere>click here</clickHere>.",
+		"havingTrouble": "If you've completed sign up but are having trouble, <clickHere>click here</clickHere>.",
+		"pasteUrl": "Paste the callback URL shown in your browser:",
+		"docsLink": "Not working? <DocsLink>Check the docs</DocsLink>.",
+		"invalidURL": "That doesn't look like a valid callback URL. Please copy what tocodex-Community is showing in your browser.",
+		"goBack": "Go back"
+	},
+	"startRouter": "We recommend using an LLM Router:",
+	"startCustom": "Or you can bring your provider API key:",
+	"telemetry": {
+		"helpImprove": "Help Improve tocodex-Community",
+		"helpImproveMessage": "tocodex-Community collects error and usage data to help us fix bugs and improve the extension. This telemetry does not collect code, prompts or personal information. You can turn this off in <settingsLink>settings</settingsLink>."
+	},
+	"importSettings": "Import Settings",
+	"openSettings": "Open Settings",
+	"tagline": "My AI Superpower"
+}

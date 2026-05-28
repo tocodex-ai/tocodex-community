@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a reproducible problem in ToCodex Community
+title: "[Bug]: "
+labels: [bug]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for helping improve ToCodex Community. Please include enough detail for maintainers to reproduce the issue.
+    - type: textarea
+      id: description
+      attributes:
+          label: Problem description
+          description: What happened, and what did you expect to happen?
+      validations:
+          required: true
+    - type: textarea
+      id: steps
+      attributes:
+          label: Steps to reproduce
+          placeholder: |
+              1. Open ...
+              2. Run ...
+              3. See ...
+      validations:
+          required: true
+    - type: textarea
+      id: environment
+      attributes:
+          label: Environment
+          description: OS, VS Code version, ToCodex Community version, Node/pnpm version if relevant.
+      validations:
+          required: true
+    - type: textarea
+      id: logs
+      attributes:
+          label: Logs or screenshots
+          description: Paste relevant logs, screenshots, or diagnostics if available.
+          render: shell

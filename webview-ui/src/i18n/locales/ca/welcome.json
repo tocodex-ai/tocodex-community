@@ -1,0 +1,53 @@
+{
+	"routers": {
+		"requesty": {
+			"description": "El teu encaminador LLM optimitzat",
+			"incentive": "Crèdit gratuït de $1"
+		},
+		"openrouter": {
+			"description": "Una interfície unificada per als LLM"
+		},
+		"roo": {
+			"description": "Els millors models gratuïts per començar",
+			"incentive": "Prova ToCodex gratis"
+		}
+	},
+	"landing": {
+		"greeting": "Benvingut a ToCodex!",
+		"introduction": "Construït amb els models més potents, dissenyat per a lliuraments d'enginyeria d'alta qualitat. 12 modes de treball, automatitzant tot el flux de treball d'extrem a extrem, des del disseny i desenvolupament fins a l'empaquetament i compilació. Fes que la IA sigui la teva super productivitat.",
+		"accountMention": "Per començar, crea el teu compte ToCodex. Obtén models potents, enginyeria d'alta qualitat, anàlisi de costos i molt més.",
+		"getStarted": "Crea compte ToCodex",
+		"noAccount": "o utilitza sense compte"
+	},
+	"providerSignup": {
+		"heading": "Tria el teu proveïdor",
+		"chooseProvider": "ToCodex necessita un proveïdor de LLM per funcionar. Tria-ne un per començar, pots afegir-ne més tard.",
+		"rooCloudProvider": "ToCodex",
+		"rooCloudDescription": "La manera més fàcil de començar és amb ToCodex: una mescla acurada de models gratuïts i de pagament a baix cost.",
+		"learnMore": "Més informació",
+		"useAnotherProvider": "Proveïdor de tercers",
+		"useAnotherProviderDescription": "Entra una clau API i comença.",
+		"noApiKeys": "No vols tractar amb claus API i comptes separats?",
+		"backToToCodex AI": "Tria el ToCodex.",
+		"goBack": "Enrere",
+		"finish": "Finalitza"
+	},
+	"waitingForCloud": {
+		"heading": "Connexió a ToCodex...",
+		"description": "Et portarem al teu navegador per registrar-te a ToCodex. Després et portarem aquí per acabar.",
+		"noPrompt": "Si no se't demana que obris una URL, <clickHere>fes clic aquí</clickHere>.",
+		"havingTrouble": "Si has acabat de registrar-te però tens problemes, <clickHere>fes clic aquí</clickHere>.",
+		"pasteUrl": "Enganxa l'URL de devolució de trucada des del teu navegador:",
+		"docsLink": "No funciona? <DocsLink>Consulta la documentació</DocsLink>.",
+		"invalidURL": "Això no sembla una URL de devolució de trucada vàlida. Si us plau, copia el que ToCodex està mostrant al teu navegador.",
+		"goBack": "Enrere"
+	},
+	"startRouter": "Recomanem utilitzar un encaminador LLM:",
+	"startCustom": "O pots portar la teva pròpia clau API:",
+	"telemetry": {
+		"helpImprove": "Ajuda a millorar ToCodex",
+		"helpImproveMessage": "ToCodex recopila dades d'errors i ús per ajudar-nos a corregir errors i millorar l'extensió. Aquesta telemetria no recopila codi, indicacions o informació personal. Pots desactivar-la a <settingsLink>configuració</settingsLink>."
+	},
+	"importSettings": "Importa la configuració",
+	"openSettings": "Obre la configuració"
+}

@@ -1,0 +1,24 @@
+name: Feature request
+description: Suggest an improvement for ToCodex Community
+title: "[Feature]: "
+labels: [enhancement]
+body:
+    - type: textarea
+      id: problem
+      attributes:
+          label: Use case
+          description: What problem would this solve?
+      validations:
+          required: true
+    - type: textarea
+      id: proposal
+      attributes:
+          label: Proposed solution
+          description: Describe the behavior or API you would like to see.
+      validations:
+          required: true
+    - type: textarea
+      id: alternatives
+      attributes:
+          label: Alternatives considered
+          description: Describe any workaround or alternative design you considered.

@@ -1,0 +1,586 @@
+import { type ModelRecord } from "@roo-code/types"
+
+import { DEFAULT_HEADERS } from "../constants"
+import { getModelsFromCache } from "./modelCache"
+
+/**
+ * Fetches available models from the ToCodex provider
+ *
+ * 策略：/v1/models 为主获取模型列表，/api/pricing 为辅补充价格信息
+ * - /v1/models 返回模型 ID 列表（需要 apiKey）
+ * - /api/pricing 返回价格、分组、free 标记等（无需鉴权）
+ *
+ * @param baseUrl The base URL of the ToCodex provider
+ * @param apiKey The API key (session token) for the ToCodex provider
+ * @returns A promise that resolves to a record of model IDs to model info
+ */
+export async function getRooModels(baseUrl: string, apiKey?: string): Promise<ModelRecord> {
+	const normalizedBase = baseUrl.replace(/\/?v1\/?$/, "")
+
+	// 无 apiKey 时跳过 /v1/models（避免无效请求等待超时），直接用 /api/pricing
+	if (!apiKey) {
+		return fetchPublicModels(normalizedBase)
+	}
+
+	// 有 apiKey 时并行请求：/v1/models 为主，/api/pricing 补充价格
+	const [v1Models, pricingMap] = await Promise.all([
+		fetchV1Models(normalizedBase, apiKey),
+		fetchPricingMap(normalizedBase),
+	])
+
+	// 以 /v1/models 为主，/api/pricing 补充价格
+	if (Object.keys(v1Models).length > 0) {
+		// 用 pricing 数据补充价格和 free 标记
+		for (const [modelName, modelInfo] of Object.entries(v1Models)) {
+			const pricing = pricingMap[modelName]
+			if (pricing) {
+				modelInfo.inputPrice = pricing.inputPrice
+				modelInfo.outputPrice = pricing.outputPrice
+				if (pricing.cacheReadsPrice !== undefined) {
+					modelInfo.cacheReadsPrice = pricing.cacheReadsPrice
+					modelInfo.supportsPromptCache = true
+				}
+				if (pricing.cacheWritesPrice !== undefined) {
+					modelInfo.cacheWritesPrice = pricing.cacheWritesPrice
+				}
+				modelInfo.isFree = pricing.isFree
+				if (pricing.modelRatio !== undefined) {
+					modelInfo.modelRatio = pricing.modelRatio
+				}
+			}
+		}
+		return v1Models
+	}
+
+	// /v1/models 失败时回退到纯 /api/pricing
+	return fetchPublicModels(normalizedBase)
+}
+
+/**
+ * 将 ToCodex 模型名映射到 OpenRouter 模型 ID
+ * 例如 "claude-sonnet-4-6" → "anthropic/claude-sonnet-4.6"
+ */
+function toOpenRouterId(name: string): string | undefined {
+	const lower = name.toLowerCase()
+
+	// Claude 系列：claude-sonnet-4-6 → anthropic/claude-sonnet-4.6
+	const claudeMatch = lower.match(/^claude-(sonnet|opus|haiku)-(\d+)-(\d+)$/)
+	if (claudeMatch) {
+		return `anthropic/claude-${claudeMatch[1]}-${claudeMatch[2]}.${claudeMatch[3]}`
+	}
+	// claude-3-5-sonnet 等旧格式
+	if (lower.startsWith("claude-")) {
+		return `anthropic/${lower}`
+	}
+
+	// GPT 系列：gpt-5.4 → openai/gpt-5.4
+	if (lower.startsWith("gpt-")) {
+		return `openai/${lower}`
+	}
+
+	// o 系列：o3-pro → openai/o3-pro
+	if (/^o[134]/.test(lower)) {
+		return `openai/${lower}`
+	}
+
+	// Gemini 系列：gemini-3.1-pro-high → google/gemini-3.1-pro-high
+	if (lower.startsWith("gemini-")) {
+		return `google/${lower}`
+	}
+
+	// DeepSeek 系列
+	if (lower.startsWith("deepseek")) {
+		return `deepseek/${lower}`
+	}
+
+	// 已经是 vendor/model 格式的（如 nvidia/nemotron-xxx）直接用
+	if (name.includes("/")) {
+		return name
+	}
+
+	return undefined
+}
+
+/**
+ * 从 OpenRouter 本地持久化缓存获取模型能力信息
+ * 直接读取 modelCache 系统中 openrouter_models.json 的磁盘/内存缓存
+ * 不发起网络请求，不阻塞
+ *
+ * OpenRouter 缓存由 modelCache.ts 的 initializeModelCacheRefresh() 在扩展启动时后台刷新一次
+ */
+function getOpenRouterModelsFromLocalCache(): Record<string, import("@roo-code/types").ModelInfo> {
+	return getModelsFromCache("openrouter") || {}
+}
+
+/**
+ * 从 /v1/models 接口获取模型列表
+ *
+ * 模型能力（maxTokens / contextWindow）三级回退（不阻塞）：
+ * 1. 服务端 /v1/models 返回的 max_output_tokens / context_window（nginx njs 注入）
+ * 2. OpenRouter 缓存匹配（仅使用已有缓存，不等待网络请求）
+ * 3. 本地 inferMaxTokens / inferContextWindow 硬编码推断
+ *
+ * 如果有模型缺字段且 OpenRouter 缓存为空，会后台异步预热缓存，下次刷新即可用。
+ */
+async function fetchV1Models(normalizedBase: string, apiKey?: string): Promise<ModelRecord> {
+	const url = `${normalizedBase}/v1/models`
+	const controller = new AbortController()
+	const timeoutId = setTimeout(() => controller.abort(), 8000)
+
+	try {
+		const headers: Record<string, string> = { ...DEFAULT_HEADERS }
+		if (apiKey) {
+			headers["Authorization"] = `Bearer ${apiKey}`
+		}
+
+		const response = await fetch(url, { headers, signal: controller.signal })
+		if (!response.ok) return {}
+
+		const json = await response.json()
+		const modelList: any[] = json.data || []
+		const models: ModelRecord = {}
+
+		// 检查是否有模型缺字段，如果有则触发后台预热 OpenRouter 缓存
+		let hasIncomplete = false
+		for (const m of modelList) {
+			const modelName: string = m.id || m.name
+			if (!modelName) continue
+			if (!(m.max_output_tokens > 0) || !(m.context_window > 0)) {
+				hasIncomplete = true
+				break
+			}
+		}
+
+		// 同步获取 OpenRouter 本地持久化缓存（不阻塞，不发网络请求）
+		const orModels = hasIncomplete ? getOpenRouterModelsFromLocalCache() : {}
+
+		// OpenRouter 本地缓存为空时无需额外操作
+		// OpenRouter 缓存由 modelCache.ts 在扩展启动时后台刷新
+
+		for (const m of modelList) {
+			const modelName: string = m.id || m.name
+			if (!modelName) continue
+
+			const tags = inferModelTags(modelName, undefined)
+			const supportsReasoningBudget = inferSupportsReasoningBudget(modelName)
+
+			// 第 1 级：服务端返回的字段
+			let maxTokens = m.max_output_tokens > 0 ? m.max_output_tokens : 0
+			let contextWindow = m.context_window > 0 ? m.context_window : 0
+
+			// 第 2 级：OpenRouter 缓存匹配（仅用已有缓存，不等待）
+			if (!maxTokens || !contextWindow) {
+				const orId = toOpenRouterId(modelName)
+				const orInfo = orId ? orModels[orId] : undefined
+				if (orInfo) {
+					if (!maxTokens && orInfo.maxTokens) maxTokens = orInfo.maxTokens
+					if (!contextWindow && orInfo.contextWindow) contextWindow = orInfo.contextWindow
+				}
+			}
+
+			// 第 3 级：本地硬编码推断
+			if (!maxTokens) maxTokens = inferMaxTokens(modelName)
+			if (!contextWindow) contextWindow = inferContextWindow(modelName)
+
+			models[modelName] = {
+				maxTokens,
+				contextWindow,
+				supportsImages: true,
+				supportsReasoningEffort: tags.includes("reasoning"),
+				supportsReasoningBudget,
+				requiredReasoningEffort: tags.includes("reasoning-required"),
+				supportsPromptCache: false,
+				inputPrice: 0,
+				outputPrice: 0,
+				description: modelName,
+			}
+		}
+
+		return models
+	} catch {
+		return {}
+	} finally {
+		clearTimeout(timeoutId)
+	}
+}
+
+/**
+ * 从 /api/pricing 接口获取价格信息，返回 modelName → 价格数据 的映射
+ */
+interface PricingInfo {
+	inputPrice: number
+	outputPrice: number
+	cacheReadsPrice?: number
+	cacheWritesPrice?: number
+	modelRatio?: number
+	isFree: boolean
+}
+
+async function fetchPricingMap(normalizedBase: string): Promise<Record<string, PricingInfo>> {
+	const url = `${normalizedBase}/api/pricing`
+	const controller = new AbortController()
+	const timeoutId = setTimeout(() => controller.abort(), 8000)
+
+	try {
+		const response = await fetch(url, {
+			headers: { ...DEFAULT_HEADERS },
+			signal: controller.signal,
+		})
+		if (!response.ok) return {}
+
+		const json = await response.json()
+		const pricingList: any[] = json.data || []
+		const result: Record<string, PricingInfo> = {}
+
+		for (const p of pricingList) {
+			const modelName: string = p.model_name
+			if (!modelName) continue
+
+			let inputPrice = 0
+			let outputPrice = 0
+			let cacheReadsPrice: number | undefined
+			let cacheWritesPrice: number | undefined
+
+			if (p.quota_type === 1) {
+				inputPrice = (p.model_price || 0) * 1_000_000
+				outputPrice = inputPrice
+			} else {
+				const ratio: number = p.model_ratio || 0
+				const inputPerToken = (ratio * 0.002) / 1000
+				const completionRatio: number = p.completion_ratio || 1
+				inputPrice = inputPerToken * 1_000_000
+				outputPrice = inputPerToken * completionRatio * 1_000_000
+
+				if (p.cache_ratio != null) {
+					cacheReadsPrice = inputPerToken * (p.cache_ratio as number) * 1_000_000
+				}
+				if (p.create_cache_ratio != null) {
+					cacheWritesPrice = inputPerToken * (p.create_cache_ratio as number) * 1_000_000
+				}
+			}
+
+			result[modelName] = {
+				inputPrice,
+				outputPrice,
+				cacheReadsPrice,
+				cacheWritesPrice,
+				modelRatio: p.model_ratio,
+				isFree: (p.model_ratio || 0) === 0 && (p.model_price || 0) === 0,
+			}
+		}
+
+		return result
+	} catch {
+		return {}
+	} finally {
+		clearTimeout(timeoutId)
+	}
+}
+
+/**
+ * 从公开的 /api/pricing 接口获取 default 分组的模型列表
+ * 无需鉴权，适用于未登录用户
+ */
+async function fetchPublicModels(normalizedBase: string): Promise<ModelRecord> {
+	const url = `${normalizedBase}/api/pricing`
+
+	const controller = new AbortController()
+	const timeoutId = setTimeout(() => controller.abort(), 8000)
+
+	try {
+		const response = await fetch(url, {
+			headers: { ...DEFAULT_HEADERS },
+			signal: controller.signal,
+		})
+
+		if (!response.ok) {
+			throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+		}
+
+		const json = await response.json()
+		const pricingList: any[] = json.data || []
+		const models: ModelRecord = {}
+
+		for (const p of pricingList) {
+			// 只取 default 分组中的模型
+			const groups: string[] | undefined = p.enable_groups
+			if (!groups || !groups.includes("default")) {
+				continue
+			}
+
+			const modelName: string = p.model_name
+			if (!modelName) continue
+
+			// 从模型名和接口 tags 推断能力标签
+			const tags = inferModelTags(modelName, p.tags)
+
+			const supportsImages = true // ToCodex 后端所有模型均支持图片多模态
+			const supportsReasoningEffort = tags.includes("reasoning")
+			const requiredReasoningEffort = tags.includes("reasoning-required")
+			// 优先从接口 tags 获取，回退到按模型名推断
+			const supportsReasoningBudget = tags.includes("reasoning-budget") || inferSupportsReasoningBudget(modelName)
+
+			// 优先使用接口返回的字段，回退到按模型名估算
+			const contextWindow: number = p.context_window ?? inferContextWindow(modelName)
+			const maxTokens: number = p.max_tokens ?? inferMaxTokens(modelName)
+
+			// 定价转换: modelRatio 1.0 = $0.002/1K tokens
+			// 插件内部使用 per-million-token 价格
+			let inputPrice = 0
+			let outputPrice = 0
+			let cacheReadsPrice: number | undefined
+			let cacheWritesPrice: number | undefined
+
+			if (p.quota_type === 1) {
+				// 按次计费
+				inputPrice = (p.model_price || 0) * 1_000_000
+				outputPrice = inputPrice
+			} else {
+				// 按倍率计费
+				const ratio: number = p.model_ratio || 0
+				const inputPerToken = (ratio * 0.002) / 1000 // $/token
+				const completionRatio: number = p.completion_ratio || 1
+				inputPrice = inputPerToken * 1_000_000
+				outputPrice = inputPerToken * completionRatio * 1_000_000
+
+				if (p.cache_ratio != null) {
+					cacheReadsPrice = inputPerToken * (p.cache_ratio as number) * 1_000_000
+				}
+				if (p.create_cache_ratio != null) {
+					cacheWritesPrice = inputPerToken * (p.create_cache_ratio as number) * 1_000_000
+				}
+			}
+
+			models[modelName] = {
+				maxTokens,
+				contextWindow,
+				supportsImages,
+				supportsReasoningEffort,
+				supportsReasoningBudget,
+				requiredReasoningEffort,
+				supportsPromptCache: cacheReadsPrice !== undefined,
+				inputPrice,
+				outputPrice,
+				cacheReadsPrice,
+				cacheWritesPrice,
+				description: p.description || modelName,
+				isFree: (p.model_ratio || 0) === 0 && (p.model_price || 0) === 0,
+				modelRatio: p.model_ratio,
+			}
+		}
+
+		return models
+	} catch (error: any) {
+		// 静默跳过：失败时返回空对象，不报错不抛异常
+		// - refreshModels 检测到空结果会保留旧缓存，不更新磁盘
+		// - getModels 检测到空结果会使用固定 fallback（首次无缓存时）
+		return {}
+	} finally {
+		clearTimeout(timeoutId)
+	}
+}
+
+/**
+ * 固定的默认回退模型列表
+ * - /api/pricing 不可用且无磁盘缓存时由 getModels() 返回给调用方
+ * - 不会写入缓存，下次启动仍会重新尝试 /api/pricing
+ */
+export function getDefaultFallbackModels(): ModelRecord {
+	return {
+		"gpt-5.4": {
+			maxTokens: 16384,
+			contextWindow: 128000,
+			supportsImages: true,
+			supportsPromptCache: false,
+			inputPrice: 0,
+			outputPrice: 0,
+			description: "GPT-5.4",
+		},
+		"claude-sonnet-4-5": {
+			maxTokens: 8192,
+			contextWindow: 200000,
+			supportsImages: true,
+			supportsPromptCache: true,
+			inputPrice: 3.0,
+			outputPrice: 15.0,
+			description: "Claude Sonnet 4.5",
+		},
+		"gpt-4o": {
+			maxTokens: 16384,
+			contextWindow: 128000,
+			supportsImages: true,
+			supportsPromptCache: false,
+			inputPrice: 2.5,
+			outputPrice: 10.0,
+			description: "GPT-4o",
+		},
+		"gpt-4o-mini": {
+			maxTokens: 16384,
+			contextWindow: 128000,
+			supportsImages: true,
+			supportsPromptCache: false,
+			inputPrice: 0.15,
+			outputPrice: 0.6,
+			description: "GPT-4o Mini",
+		},
+		"deepseek-chat": {
+			maxTokens: 8192,
+			contextWindow: 64000,
+			supportsImages: false,
+			supportsPromptCache: false,
+			inputPrice: 0.14,
+			outputPrice: 0.28,
+			description: "DeepSeek Chat",
+		},
+		"gemini-2.5-flash": {
+			maxTokens: 8192,
+			contextWindow: 1000000,
+			supportsImages: true,
+			supportsPromptCache: false,
+			inputPrice: 0.15,
+			outputPrice: 0.6,
+			description: "Gemini 2.5 Flash",
+		},
+	}
+}
+
+/**
+ * 根据模型名称和 pricing tags 推断能力标签
+ */
+function inferModelTags(name: string, pricingTags?: string): string[] {
+	const tags: string[] = []
+	const lower = name.toLowerCase()
+
+	// 视觉能力 - 仅已知支持视觉的模型系列
+	if (
+		lower.includes("vision") ||
+		lower.includes("gpt-4o") ||
+		lower.includes("gpt-4-turbo") ||
+		lower.includes("claude-3") ||
+		lower.includes("claude-sonnet") ||
+		lower.includes("claude-opus") ||
+		lower.includes("claude-haiku") ||
+		lower.includes("gemini") ||
+		lower.includes("pixtral") ||
+		lower.includes("llava")
+	) {
+		tags.push("vision")
+	}
+
+	// 推理能力
+	if (lower.includes(":thinking") || /\bo[134]-/.test(lower) || lower.includes("deepseek-reasoner")) {
+		tags.push("reasoning")
+		if (lower.includes(":thinking")) {
+			tags.push("reasoning-required")
+		}
+	}
+
+	// 补充 pricing 接口返回的 tags
+	if (pricingTags) {
+		for (const t of pricingTags
+			.split(",")
+			.map((s) => s.trim())
+			.filter(Boolean)) {
+			if (!tags.includes(t)) {
+				tags.push(t)
+			}
+		}
+	}
+
+	return tags
+}
+
+/**
+ * 根据模型名估算 context window 大小（接口未返回时的回退值）
+ */
+function inferContextWindow(name: string): number {
+	const lower = name.toLowerCase()
+	// Gemini 系列
+	if (lower.includes("gemini")) return 1_000_000
+	// Claude 系列
+	if (lower.includes("claude-sonnet-4") || lower.includes("claude-opus-4")) return 200_000
+	if (lower.includes("claude-3-5") || lower.includes("claude-sonnet") || lower.includes("claude-opus")) return 200_000
+	if (lower.includes("claude-haiku")) return 200_000
+	if (lower.includes("claude-3")) return 200_000
+	if (lower.includes("claude")) return 200_000
+	// GPT-5 系列
+	if (
+		lower.includes("gpt-5.4") ||
+		lower.includes("gpt-5.3") ||
+		lower.includes("gpt-5.2") ||
+		lower.includes("gpt-5.1")
+	)
+		return 1_050_000
+	if (lower.includes("gpt-5")) return 400_000
+	// GPT-4 系列
+	if (lower.includes("gpt-4o") || lower.includes("gpt-4-turbo") || lower.includes("gpt-4.1")) return 128_000
+	// OpenAI o 系列
+	if (/\bo[134]/.test(lower)) return 200_000
+	// DeepSeek
+	if (lower.includes("deepseek")) return 128_000
+	// Qwen
+	if (lower.includes("qwen")) return 131_072
+	// Mistral
+	if (lower.includes("mistral") || lower.includes("codestral")) return 128_000
+	// MiniMax
+	if (lower.includes("minimax")) return 196_608
+	// Grok
+	if (lower.includes("grok")) return 131_072
+	// Llama
+	if (lower.includes("llama")) return 131_072
+	// Auto 路由模型按 Claude 标准
+	if (lower === "auto" || lower === "auto-free") return 200_000
+	return 128_000 // 通用默认值
+}
+
+/**
+ * 根据模型名判断是否支持 reasoning budget（extended thinking）
+ */
+function inferSupportsReasoningBudget(name: string): boolean {
+	const lower = name.toLowerCase()
+	return (
+		lower.includes("claude-sonnet-4") ||
+		lower.includes("claude-opus-4") ||
+		lower.includes("claude-haiku-4") ||
+		lower.includes("claude-3-7-sonnet") ||
+		lower.includes("claude-3.7-sonnet")
+	)
+}
+
+/**
+ * 根据模型名估算最大输出 token 数（接口未返回时的回退值）
+ */
+function inferMaxTokens(name: string): number {
+	const lower = name.toLowerCase()
+	// Claude 4.x 系列（extended thinking）
+	if (lower.includes("claude-opus-4")) return 64_000
+	if (lower.includes("claude-sonnet-4") || lower.includes("claude-haiku-4")) return 64_000
+	// Claude 3.x 系列
+	if (lower.includes("claude-3-5") || lower.includes("claude-3.5")) return 8_192
+	if (lower.includes("claude-3-7") || lower.includes("claude-3.7")) return 64_000
+	if (lower.includes("claude")) return 8_192
+	// GPT-5 系列
+	if (lower.includes("gpt-5")) return 128_000
+	// GPT-4 系列
+	if (lower.includes("gpt-4.1")) return 32_768
+	if (lower.includes("gpt-4o") || lower.includes("gpt-4-turbo")) return 16_384
+	// OpenAI o 系列
+	if (/\bo[134]/.test(lower)) return 100_000
+	// Gemini
+	if (lower.includes("gemini")) return 65_536
+	// DeepSeek
+	if (lower.includes("deepseek")) return 16_384
+	// Qwen
+	if (lower.includes("qwen")) return 32_768
+	// Mistral
+	if (lower.includes("mistral") || lower.includes("codestral")) return 32_768
+	// MiniMax
+	if (lower.includes("minimax")) return 65_536
+	// Grok
+	if (lower.includes("grok")) return 32_768
+	// Llama
+	if (lower.includes("llama")) return 16_384
+	// Auto 路由模型按 Claude Sonnet 标准
+	if (lower === "auto" || lower === "auto-free") return 64_000
+	return 16_384 // 通用默认值（比之前的 4096 更合理）
+}

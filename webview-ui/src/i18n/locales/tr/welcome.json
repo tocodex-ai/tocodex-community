@@ -1,0 +1,53 @@
+{
+	"routers": {
+		"requesty": {
+			"description": "Optimize edilmiş LLM yönlendiriciniz",
+			"incentive": "$1 ücretsiz kredi"
+		},
+		"openrouter": {
+			"description": "LLM'ler için birleşik bir arayüz"
+		},
+		"roo": {
+			"description": "Başlamak için en iyi ücretsiz modeller",
+			"incentive": "ToCodex'i ücretsiz dene"
+		}
+	},
+	"landing": {
+		"greeting": "ToCodex'e Hoş Geldin!",
+		"introduction": "En güçlü modellerle donatılmış, yüksek kaliteli mühendislik teslimatı için tasarlanmış. 12 çalışma modu, tasarım ve geliştirmeden paketleme ve derlemeye kadar tüm iş akışını uçtan uca otomatikleştirin. AI'yı süper üretkenliğiniz yapın.",
+		"accountMention": "Başlamak için ToCodex hesabını oluştur. Güçlü modeller, yüksek kaliteli mühendislik, maliyet analizi ve daha fazlasını al.",
+		"getStarted": "ToCodex Hesabı Oluştur",
+		"noAccount": "veya hesap olmadan kullan"
+	},
+	"providerSignup": {
+		"heading": "Sağlayıcınızı seçin",
+		"chooseProvider": "ToCodex'in çalışması için bir LLM sağlayıcısına ihtiyacı var. Başlamak için bir tane seç, sonra daha fazlasını ekleyebilirsin.",
+		"rooCloudProvider": "ToCodex",
+		"rooCloudDescription": "Başlamak için en kolay yol ToCodex'i kullanmaktır: ücretsiz ve ücretli modellerin dikkatli seçilmiş bir karışımı, düşük maliyette.",
+		"learnMore": "Daha fazla bilgi",
+		"useAnotherProvider": "Üçüncü taraf Sağlayıcı",
+		"useAnotherProviderDescription": "Bir API anahtarı gir ve başla.",
+		"noApiKeys": "API anahtarları ve ayrı hesaplarla uğraşmak istemez misin?",
+		"backToToCodex AI": "ToCodex'i seç.",
+		"goBack": "Geri",
+		"finish": "Bitir"
+	},
+	"waitingForCloud": {
+		"heading": "ToCodex'e giriş yapılıyor...",
+		"description": "Seni ToCodex'e kaydolmak için tarayıcına göndereceğiz. Sonra seni buraya geri getireceğiz.",
+		"noPrompt": "Bir URL açmanız istenmezse, <clickHere>buraya tıklayın</clickHere>.",
+		"havingTrouble": "Kaydı tamamladıysanız ama sorun yaşıyorsanız, <clickHere>buraya tıklayın</clickHere>.",
+		"pasteUrl": "Tarayıcınızda gösterilen geri arama URL'sini yapıştırın:",
+		"docsLink": "Çalışmıyor mu? <DocsLink>Belgeleri kontrol edin</DocsLink>.",
+		"invalidURL": "Bu geçerli bir geri arama URL'si gibi görünmüyor. ToCodex'in tarayıcınızda gösterdiğini kopyalayın.",
+		"goBack": "Geri"
+	},
+	"startRouter": "Bir LLM yönlendiricisi kullanmanızı öneririz:",
+	"startCustom": "Veya kendi API anahtarınızı getirebilirsiniz:",
+	"telemetry": {
+		"helpImprove": "ToCodex'i iyileştirmeye yardımcı ol",
+		"helpImproveMessage": "ToCodex, hataları düzeltmemize ve uzantıyı iyileştirmemize yardımcı olmak için hata ve kullanım verilerini toplar. Bu telemetri kod, komutlar veya kişisel bilgileri toplamaz. Bunu <settingsLink>ayarlardan</settingsLink> devre dışı bırakabilirsin."
+	},
+	"importSettings": "Ayarları İçe Aktar",
+	"openSettings": "Ayarları Aç"
+}

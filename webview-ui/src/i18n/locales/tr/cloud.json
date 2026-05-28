@@ -1,0 +1,33 @@
+{
+	"title": "Cloud",
+	"profilePicture": "Profil resmi",
+	"logOut": "Çıkış yap",
+	"testApiAuthentication": "API Kimlik Doğrulamayı Test Et",
+	"signIn": "ToCodex'a bağlan",
+	"connect": "Başlayın",
+	"cloudBenefitsTitle": "ToCodex'u Deneyin",
+	"cloudBenefitProvider": "ToCodex AI ile harika çalışan ücretsiz ve ücretli modellere erişin",
+	"cloudBenefitCloudAgents": "Otonom Bulut ajanlarına görevler verin",
+	"cloudBenefitTriggers": "GitHub'da kod incelemeleri alın, Slack'ten görevler başlatın ve daha fazlasını yapın",
+	"cloudBenefitWalkaway": "Görevleri her yerden (telefonunuz dahil) takip edin ve kontrol edin",
+	"cloudBenefitHistory": "Görev geçmişinize her yerden erişin ve başkalarıyla paylaşın",
+	"cloudBenefitMetrics": "Token tüketiminizin bütünsel görünümünü elde edin",
+	"visitCloudWebsite": "ToCodex'u ziyaret et",
+	"taskSync": "Görev senkronizasyonu",
+	"taskSyncDescription": "Görevlerinizi ToCodex'da görüntülemek ve paylaşmak için senkronize edin",
+	"taskSyncManagedByOrganization": "Görev senkronizasyonu kuruluşunuz tarafından yönetilir",
+	"usageMetricsAlwaysReported": "Oturum açıldığında model kullanım bilgileri her zaman raporlanır",
+	"authWaiting": "Kimlik doğrulama tamamlanması bekleniyor...",
+	"havingTrouble": "Sorun yaşıyor musun?",
+	"pasteCallbackUrl": "Tarayıcından redirect URL'sini kopyala ve buraya yapıştır:",
+	"startOver": "Baştan başla",
+	"personalAccount": "Kişisel Hesap",
+	"switchAccount": "ToCodex Hesabını Değiştir",
+	"createTeamAccount": "Takım Hesabı Oluştur",
+	"cloudUrlPillLabel": "ToCodex URL'si",
+	"upsell": {
+		"autoApprovePowerUser": "ToCodex AI'ya biraz bağımsızlık mı veriyorsunuz? ToCodex ile onu her yerden kontrol edin. <learnMoreLink>Daha fazla bilgi edinin</learnMoreLink>.",
+		"longRunningTask": "Bu biraz zaman alabilir. Bulut ile her yerden devam edin.",
+		"taskList": "ToCodex AI'dan memnun musunuz? ToCodex'a göz atın: görevlerinizi her yerden takip edin ve kontrol edin, otonom Bulut ajanlarını çalıştırın, kullanım istatistikleri alın ve daha fazlasını yapın. <learnMoreLink>Daha fazla bilgi edinin</learnMoreLink>."
+	}
+}

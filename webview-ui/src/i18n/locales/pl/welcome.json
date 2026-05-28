@@ -1,0 +1,53 @@
+{
+	"routers": {
+		"requesty": {
+			"description": "Twój zoptymalizowany router LLM",
+			"incentive": "Bezpłatny kredyt w wysokości $1"
+		},
+		"openrouter": {
+			"description": "Ujednolicony interfejs dla LLM"
+		},
+		"roo": {
+			"description": "Najlepsze bezpłatne modele dla początkujących",
+			"incentive": "Wypróbuj ToCodex bezpłatnie"
+		}
+	},
+	"landing": {
+		"greeting": "Witaj w ToCodex!",
+		"introduction": "Zbudowany z najpotężniejszymi modelami, zaprojektowany do wysokiej jakości dostarczania inżynierii. 12 trybów pracy, automatyzujących cały przepływ pracy od projektowania i rozwoju po pakowanie i kompilację od początku do końca. Niech AI stanie się Twoją super produktywnością.",
+		"accountMention": "Aby rozpocząć, utwórz konto ToCodex. Otrzymaj potężne modele, wysokiej jakości inżynierię, analizę kosztów i wiele więcej.",
+		"getStarted": "Utwórz konto ToCodex",
+		"noAccount": "lub używaj bez konta"
+	},
+	"providerSignup": {
+		"heading": "Wybierz swojego dostawcę",
+		"chooseProvider": "ToCodex potrzebuje dostawcy LLM, aby działać. Wybierz jeden, aby zacząć, możesz dodać więcej później.",
+		"rooCloudProvider": "ToCodex",
+		"rooCloudDescription": "Najłatwiejszy sposób na rozpoczęcie to skorzystanie z ToCodex: starannie wybrany mix bezpłatnych i płatnych modeli w niskiej cenie.",
+		"learnMore": "Dowiedz się więcej",
+		"useAnotherProvider": "Dostawca trzeciej strony",
+		"useAnotherProviderDescription": "Wprowadź klucz API i zacznij.",
+		"noApiKeys": "Nie chcesz radzić sobie z kluczami API i oddzielnymi kontami?",
+		"backToToCodex AI": "Wybierz ToCodex.",
+		"goBack": "Wróć",
+		"finish": "Zakończ"
+	},
+	"waitingForCloud": {
+		"heading": "Logowanie do ToCodex...",
+		"description": "Zaprowadzimy Cię do przeglądarki, aby zarejestrować się w ToCodex. Następnie wrócimy tutaj, aby ukończyć.",
+		"noPrompt": "Jeśli nie zostaniesz poproszony o otwarcie adresu URL, <clickHere>kliknij tutaj</clickHere>.",
+		"havingTrouble": "Jeśli ukończyłeś rejestrację, ale masz problemy, <clickHere>kliknij tutaj</clickHere>.",
+		"pasteUrl": "Wklej adres URL wywołania zwrotnego z przeglądarki:",
+		"docsLink": "Nie działa? <DocsLink>Sprawdź dokumentację</DocsLink>.",
+		"invalidURL": "To nie wygląda na prawidłowy adres URL wywołania zwrotnego. Skopiuj to, co ToCodex wyświetla w przeglądarce.",
+		"goBack": "Wróć"
+	},
+	"startRouter": "Rekomendujemy użycie routera LLM:",
+	"startCustom": "Lub możesz przynieść swój własny klucz API:",
+	"telemetry": {
+		"helpImprove": "Pomóż ulepszyć ToCodex",
+		"helpImproveMessage": "ToCodex zbiera dane o błędach i użytkowaniu, aby pomóc nam naprawiać błędy i ulepszać rozszerzenie. Ta telemetria nie zbiera kodu, podpowiedzi ani danych osobowych. Możesz je wyłączyć w <settingsLink>ustawieniach</settingsLink>."
+	},
+	"importSettings": "Importuj ustawienia",
+	"openSettings": "Otwórz ustawienia"
+}

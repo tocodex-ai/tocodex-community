@@ -1,0 +1,32 @@
+{
+	"readFile": {
+		"linesRange": " (Zeilen {{start}}-{{end}})",
+		"definitionsOnly": " (nur Definitionen)",
+		"maxLines": " (maximal {{max}} Zeilen)",
+		"imageTooLarge": "Die Bilddatei ist zu groß ({{size}} MB). Die maximal erlaubte Größe beträgt {{max}} MB.",
+		"imageWithSize": "Bilddatei ({{size}} KB)"
+	},
+	"toolRepetitionLimitReached": "Roo scheint in einer Schleife festzustecken und versucht wiederholt dieselbe Aktion ({{toolName}}). Dies könnte auf ein Problem mit der aktuellen Strategie hindeuten. Überlege dir, die Aufgabe umzuformulieren, genauere Anweisungen zu geben oder Roo zu einem anderen Ansatz zu führen.",
+	"unknownToolError": "Roo hat versucht, ein unbekanntes Tool zu verwenden: \"{{toolName}}\". Wiederhole Versuch...",
+	"codebaseSearch": {
+		"approval": "Suche nach '{{query}}' im Codebase..."
+	},
+	"newTask": {
+		"errors": {
+			"policy_restriction": "Neue Aufgabe konnte aufgrund von Richtlinienbeschränkungen nicht erstellt werden."
+		}
+	},
+	"generateImage": {
+		"openRouterApiKeyRequired": "OpenRouter API-Schlüssel ist für die Bildgenerierung mit OpenRouter-Modellen erforderlich. Bitte konfiguriere ihn in den Experimentellen Einstellungen für Bildgenerierung.",
+		"failedWithStatus": "Bildgenerierung fehlgeschlagen: {{status}} {{statusText}}",
+		"failedWithMessage": "Bildgenerierung fehlgeschlagen: {{message}}",
+		"noImageGenerated": "In der Antwort wurde kein Bild generiert",
+		"invalidImageData": "Ungültige Bilddaten in der Antwort",
+		"invalidImageFormat": "Ungültiges Bildformat erhalten",
+		"unknownError": "Unbekannter Fehler aufgetreten",
+		"timeoutHint": "Dies kann durch ein Netzwerk-Timeout verursacht werden. Hochauflösende Bilder (z. B. 4K) benötigen mehr Zeit zur Generierung und können das Timeout-Limit überschreiten. Bitte versuchen Sie, die Bildauflösung zu reduzieren (z. B. 1024x1024 statt 4096x4096).",
+		"roo": {
+			"authRequired": "ToCodex Cloud-Authentifizierung ist für die Bildgenerierung erforderlich. Bitte melde dich bei ToCodex Cloud an."
+		}
+	}
+}

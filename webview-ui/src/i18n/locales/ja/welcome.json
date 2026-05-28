@@ -1,0 +1,53 @@
+{
+	"routers": {
+		"requesty": {
+			"description": "最適化されたLLMルーター",
+			"incentive": "無料の$1クレジット"
+		},
+		"openrouter": {
+			"description": "LLM向けの統一インターフェース"
+		},
+		"roo": {
+			"description": "始めるための最高の無料モデル",
+			"incentive": "ToCodexを無料で試す"
+		}
+	},
+	"landing": {
+		"greeting": "ToCodexへようこそ！",
+		"introduction": "最も強力なモデルを内蔵し、高品質なエンジニアリング成果のために設計。12種類の作業モードで、設計・開発からパッケージング・コンパイルまで、全工程をエンドツーエンドで自動完了。AIをあなたの超生産力に。",
+		"accountMention": "始めるには、ToCodexアカウントを作成してください。強力なモデル、高品質なエンジニアリング、コスト分析などをご利用いただけます。",
+		"getStarted": "ToCodexアカウントを作成",
+		"noAccount": "またはアカウントなしで使用"
+	},
+	"providerSignup": {
+		"heading": "プロバイダーを選択",
+		"chooseProvider": "ToCodexが機能するにはLLMプロバイダーが必要です。始めるために1つを選択してください。後から追加することもできます。",
+		"rooCloudProvider": "ToCodex",
+		"rooCloudDescription": "始める最も簡単な方法は、ToCodexを使用することです。無料および有料モデルの厳選されたミックスを低コストで提供します。",
+		"learnMore": "詳細を見る",
+		"useAnotherProvider": "サードパーティプロバイダー",
+		"useAnotherProviderDescription": "APIキーを入力して開始します。",
+		"noApiKeys": "APIキーと別のアカウントを処理したくありませんか?",
+		"backToToCodex AI": "ToCodexを選択してください。",
+		"goBack": "戻る",
+		"finish": "完了"
+	},
+	"waitingForCloud": {
+		"heading": "ToCodexにログイン中...",
+		"description": "ToCodexに登録するためにブラウザーに移動します。その後、ここに戻って完了します。",
+		"noPrompt": "URLを開くように求められない場合は、<clickHere>ここをクリック</clickHere>してください。",
+		"havingTrouble": "登録を完了しましたがトラブルが発生している場合は、<clickHere>ここをクリック</clickHere>してください。",
+		"pasteUrl": "ブラウザーに表示されているコールバックURLを貼り付けます:",
+		"docsLink": "機能していませんか？<DocsLink>ドキュメントを確認</DocsLink>してください。",
+		"invalidURL": "有効なコールバックURLのようには見えません。ToCodexがブラウザーに表示しているものをコピーしてください。",
+		"goBack": "戻る"
+	},
+	"startRouter": "LLMルーターの使用をお勧めします:",
+	"startCustom": "または、独自のAPIキーを持ってくることもできます:",
+	"telemetry": {
+		"helpImprove": "ToCodexの改善にご協力ください",
+		"helpImproveMessage": "ToCodexは、バグを修正し、拡張機能を改善するために、エラーおよび使用データを収集します。このテレメトリはコード、プロンプト、または個人情報を収集しません。これは<settingsLink>設定</settingsLink>で無効にできます。"
+	},
+	"importSettings": "設定のインポート",
+	"openSettings": "設定を開く"
+}

@@ -1,0 +1,53 @@
+{
+	"routers": {
+		"requesty": {
+			"description": "Router LLM yang dioptimalkan",
+			"incentive": "Kredit gratis $1"
+		},
+		"openrouter": {
+			"description": "Antarmuka terpadu untuk LLM"
+		},
+		"roo": {
+			"description": "Model gratis terbaik untuk memulai",
+			"incentive": "Coba ToCodex gratis"
+		}
+	},
+	"landing": {
+		"greeting": "Selamat datang di ToCodex!",
+		"introduction": "Dibangun dengan model paling kuat, dirancang untuk pengiriman rekayasa berkualitas tinggi. 12 mode kerja, mengotomatiskan seluruh alur kerja dari desain dan pengembangan hingga pengemasan dan kompilasi secara end-to-end. Jadikan AI sebagai super produktivitas Anda.",
+		"accountMention": "Untuk memulai, buat akun ToCodex Anda. Dapatkan model yang kuat, rekayasa berkualitas tinggi, analisis biaya, dan banyak lagi.",
+		"getStarted": "Buat Akun ToCodex",
+		"noAccount": "atau gunakan tanpa akun"
+	},
+	"providerSignup": {
+		"heading": "Pilih penyedia Anda",
+		"chooseProvider": "ToCodex memerlukan penyedia LLM untuk bekerja. Pilih satu untuk memulai, Anda dapat menambahkan lebih banyak nanti.",
+		"rooCloudProvider": "ToCodex",
+		"rooCloudDescription": "Cara termudah untuk memulai adalah dengan ToCodex: campuran model gratis dan berbayar yang dikurasi dengan hati-hati dengan biaya rendah.",
+		"learnMore": "Pelajari lebih lanjut",
+		"useAnotherProvider": "Penyedia Pihak Ketiga",
+		"useAnotherProviderDescription": "Masukkan kunci API dan mulai.",
+		"noApiKeys": "Tidak ingin berurusan dengan kunci API dan akun terpisah?",
+		"backToToCodex AI": "Pilih ToCodex.",
+		"goBack": "Kembali",
+		"finish": "Selesai"
+	},
+	"waitingForCloud": {
+		"heading": "Masuk ke ToCodex...",
+		"description": "Kami akan membawa Anda ke browser Anda untuk mendaftar ToCodex. Kemudian kami akan membawa Anda kembali ke sini untuk menyelesaikannya.",
+		"noPrompt": "Jika Anda tidak diminta untuk membuka URL, <clickHere>klik di sini</clickHere>.",
+		"havingTrouble": "Jika Anda telah menyelesaikan pendaftaran tetapi mengalami masalah, <clickHere>klik di sini</clickHere>.",
+		"pasteUrl": "Tempel URL callback dari browser Anda:",
+		"docsLink": "Tidak bekerja? <DocsLink>Periksa dokumentasi</DocsLink>.",
+		"invalidURL": "Itu tidak terlihat seperti URL callback yang valid. Harap salin apa yang ditampilkan ToCodex di browser Anda.",
+		"goBack": "Kembali"
+	},
+	"startRouter": "Kami merekomendasikan menggunakan router LLM:",
+	"startCustom": "Atau Anda dapat membawa kunci API Anda sendiri:",
+	"telemetry": {
+		"helpImprove": "Bantu Tingkatkan ToCodex",
+		"helpImproveMessage": "ToCodex mengumpulkan data kesalahan dan penggunaan untuk membantu kami memperbaiki bug dan meningkatkan ekstensi. Telemetri ini tidak mengumpulkan kode, prompt, atau informasi pribadi. Anda dapat menonaktifkannya di <settingsLink>pengaturan</settingsLink>."
+	},
+	"importSettings": "Impor Pengaturan",
+	"openSettings": "Buka Pengaturan"
+}

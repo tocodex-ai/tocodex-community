@@ -1,0 +1,51 @@
+# Exclude everything
+**
+
+# Include empty CHANGELOG to clear marketplace cache
+!CHANGELOG.md
+
+# Include README.md and LICENSE
+!README.md
+!LICENSE
+
+# Include package.json
+!package.json
+!package.nls.*
+
+# Include the built extension (精确包含，不含 sourcemap)
+# 主扩展 JS（不含 .map）
+!dist/extension.js
+!dist/wasm_exec.js
+!dist/wasm_exec_node.js
+# workers
+!dist/workers/countTokens.js
+# WASM 文件（所有 *.wasm）
+!dist/*.wasm
+!dist/workers/*.wasm
+# i18n 本地化文件
+!dist/i18n/**
+# esbuild 二进制（跨平台工具）
+!dist/bin/**
+# SSH MCP Server bundle
+!mcp-servers/**
+
+# Include the built webview
+!webview-ui/audio
+!webview-ui/build/assets/*.js
+!webview-ui/build/assets/*.ttf
+!webview-ui/build/assets/*.css
+!webview-ui/build/assets/fonts/*.woff
+!webview-ui/build/assets/fonts/*.woff2
+!webview-ui/build/assets/fonts/*.ttf
+
+# Include default themes JSON files used in getTheme
+!integrations/theme/default-themes/**
+
+# Include icons and images
+!assets/codicons/**
+!assets/vscode-material-icons/**
+!assets/icons/**
+!assets/images/**
+
+# Include .env file for telemetry
+!.env

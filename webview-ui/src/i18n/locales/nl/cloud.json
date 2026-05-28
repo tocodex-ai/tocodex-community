@@ -1,0 +1,33 @@
+{
+	"title": "Cloud",
+	"profilePicture": "Profielfoto",
+	"logOut": "Uitloggen",
+	"testApiAuthentication": "API-authenticatie testen",
+	"signIn": "Verbind met ToCodex",
+	"connect": "Aan de slag",
+	"cloudBenefitsTitle": "Probeer ToCodex",
+	"cloudBenefitProvider": "Toegang tot gratis en betaalde modellen die geweldig werken met ToCodex AI",
+	"cloudBenefitCloudAgents": "Geef taken aan autonome Cloud-agents",
+	"cloudBenefitTriggers": "Krijg code reviews op GitHub, start taken vanuit Slack en meer",
+	"cloudBenefitWalkaway": "Volg en beheer taken van overal (inclusief je telefoon)",
+	"cloudBenefitHistory": "Toegang tot je taakgeschiedenis van overal en deel ze met anderen",
+	"cloudBenefitMetrics": "Krijg een holistisch overzicht van je tokenverbruik",
+	"visitCloudWebsite": "Bezoek ToCodex",
+	"taskSync": "Taaksynchronisatie",
+	"taskSyncDescription": "Synchroniseer je taken om ze te bekijken en delen op ToCodex",
+	"taskSyncManagedByOrganization": "Taaksynchronisatie wordt beheerd door uw organisatie",
+	"usageMetricsAlwaysReported": "Modelgebruiksinformatie wordt altijd gerapporteerd wanneer ingelogd",
+	"authWaiting": "Wachten tot authenticatie voltooid is...",
+	"havingTrouble": "Problemen?",
+	"pasteCallbackUrl": "Kopieer de redirect-URL uit je browser en plak hem hier:",
+	"startOver": "Opnieuw beginnen",
+	"personalAccount": "Persoonlijk Account",
+	"switchAccount": "Wissel van tocodex-Community Account",
+	"createTeamAccount": "Teamaccount aanmaken",
+	"cloudUrlPillLabel": "ToCodex URL",
+	"upsell": {
+		"autoApprovePowerUser": "ToCodex AI wat onafhankelijkheid geven? Bedien het overal met ToCodex. <learnMoreLink>Meer informatie</learnMoreLink>.",
+		"longRunningTask": "Dit kan even duren. Ga overal verder met de Cloud.",
+		"taskList": "Geniet je van ToCodex AI? Bekijk ToCodex: volg en beheer je taken overal, voer autonome Cloud-agents uit, krijg gebruiksstatistieken en meer. <learnMoreLink>Meer informatie</learnMoreLink>."
+	}
+}

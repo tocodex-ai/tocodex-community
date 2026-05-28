@@ -1,0 +1,8 @@
+{
+	"extends": "@roo-code/config-typescript/vscode-library.json",
+	"compilerOptions": {
+		"allowImportingTsExtensions": true
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"]
+}
