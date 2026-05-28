@@ -100,11 +100,9 @@ const WelcomeViewProvider = () => {
 	)
 
 	const handleGetStarted = useCallback(() => {
-		// Landing screen - always trigger auth with Roo
+		// Landing screen - open account registration directly.
 		if (selectedProvider === null) {
-			setAuthOrigin("landing")
-			vscode.postMessage({ type: "rooCloudSignIn", useProviderSignup: true })
-			setAuthInProgress(true)
+			vscode.postMessage({ type: "openExternal", url: "https://ruteapi.com/register" })
 		}
 		// Provider Selection screen
 		else if (selectedProvider === "roo") {
@@ -189,7 +187,7 @@ const WelcomeViewProvider = () => {
 	}, [manualUrl])
 
 	const handleOpenSignupUrl = () => {
-		vscode.postMessage({ type: "rooCloudSignIn", useProviderSignup: false })
+		vscode.postMessage({ type: "openExternal", url: "https://ruteapi.com/register" })
 	}
 
 	// Render the waiting for cloud state
@@ -336,7 +334,7 @@ const WelcomeViewProvider = () => {
 									{t("welcome:landing.bindApiKey")}
 								</button>
 								<span className="text-vscode-descriptionForeground text-xs">|</span>
-								<VSCodeLink href="https://ruteapi.com/console/token" className="text-sm">
+								<VSCodeLink href="https://ruteapi.com/keys" className="text-sm">
 									{t("welcome:landing.howToGetKey")}
 								</VSCodeLink>
 							</div>
