@@ -21,6 +21,16 @@ ToCodex Community is based on Roo Code and preserves Apache-2.0 upstream attribu
 
 ToCodex Community is maintained as an independent continuation based on Roo Code, with upstream attribution preserved. In this comparison, v1 means the Roo Code-derived baseline and v2/v3 means the ToCodex functional upgrade layer added on top of it.
 
+### Featured Upgrades
+
+| Feature | Why It Matters |
+| --- | --- |
+| **Plan Mode and persisted planning** | Lets the agent explore in read-only mode, present a structured plan, persist task progress, and move into implementation only after confirmation. |
+| **Browser Task mode** | Adds a new browser-oriented workflow for page interaction, inspection, login-state handling, Playwright MCP usage, and web UI operation. |
+| **Parallel multi-agent work** | Adds `spawn_parallel_task` so independent subtasks can run concurrently, with status tracking and a default maximum of 3 parallel agents. |
+| **Main model plus auxiliary model** | Separates the primary coding model from a lighter auxiliary model for summaries, condense, memory, and background support work. |
+| **Built-in `web_fetch`** | Fetches URLs directly, converts pages to Markdown, handles trusted documentation domains, and reduces dependence on external MCP just to read web content. |
+
 | Dimension | Roo Code v1 Baseline | ToCodex v2/v3 Upgrade |
 | --- | --- | --- |
 | Code understanding | Relies mostly on `grep` / `search_files` style text search. | Adds `lsp_code_intelligence` backed by VS Code language services: go to definition, find references, hover/type information, symbols, and call hierarchy. |
