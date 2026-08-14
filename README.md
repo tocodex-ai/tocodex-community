@@ -1,11 +1,5 @@
 # ToCodex Community
 
-## 我的 AI 超能力 / My AI Superpowers
-
-### 社区互动 TG 群 / Community Telegram Group
-
-<img src="docs/images/tg.jpg" alt="ToCodex Community Telegram group" width="360">
-
 ToCodex Community is a maintained open-source AI coding agent for VS Code, evolved from Roo Code and kept independent for community use. It focuses on practical engineering workflows: planning, editing, debugging, terminal work, MCP tools, multi-model providers, and repeatable project automation inside the editor.
 
 Website: https://tocodex.com
@@ -74,24 +68,6 @@ ToCodex Community is maintained as an independent continuation based on Roo Code
 | Image and multimodal workflows | Multimodal support is limited compared with ToCodex's later workflow surface. | Adds Image Gen mode, text-to-image, image-to-image, targeted image editing, saved image handling, multimodal image input, and ToCodex image model alignment with server routes. |
 | Remote/server operations | Remote work depends on generic shell/MCP flows. | Adds SSH Server mode and direct workflows for server diagnostics, Docker container commands/logs, PostgreSQL queries, deployment checks, and infrastructure operations. |
 | Safety and recovery | Provides auto-approval and checkpoint-style protections. | Strengthens fine-grained auto-approval, run-all-command controls, command allow/deny lists, protected file checks, RooIgnore-style exclusions, checkpoints, restore/diff workflows, Git worktree support, and rollback-oriented recovery. |
-
-## Global AI Coding Tool Comparison
-
-The AI coding market is moving quickly, and each product makes different trade-offs between model freedom, in-editor editing, agent loops, terminal capability, extensibility, and enterprise controls. The comparison below uses the visual comparison assets prepared for ToCodex Community; details may change as each vendor updates its product.
-
-### Functional Modes
-
-![ToCodex Community functional modes](docs/images/tocodex-functional-modes.png)
-
-### Key Capability Radar
-
-![Market mainstream AI Coding key capability comparison](docs/images/ai-coding-capability-radar.png)
-
-### Feature Matrix
-
-![Detailed AI coding tools feature matrix](docs/images/ai-coding-feature-matrix.png)
-
-In short, ToCodex Community is positioned as an open, extensible VS Code agent runtime for developers who want model choice, local-provider support, MCP tooling, custom modes, and transparent source code. Commercial ToCodex offerings can add hosted routing, account services, team controls, and enterprise support without making the community edition depend on closed-source services.
 
 ## Architecture
 
